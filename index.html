@@ -18,6 +18,7 @@
       --border: #E5E1D8;
       --border-dark: #D4CEBF;
       --primary: #1E3A8A;
+      --primary-hover: #172554;
       --primary-light: #EFF6FF;
       --accent: #B45309;
       --accent-subtle: #FEF3C7;
@@ -58,29 +59,30 @@
     .nav-container {
       max-width: 1440px;
       margin: 0 auto;
-      padding: 0.75rem 1.25rem;
+      padding: 0.75rem 1rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      gap: 0.75rem;
       flex-wrap: wrap;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.6rem;
     }
 
     .brand-badge {
       background: var(--primary);
       color: #fff;
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       padding: 0.25rem 0.5rem;
       border-radius: 4px;
+      white-space: nowrap;
     }
 
     .brand-title {
@@ -94,7 +96,7 @@
     .brand-subtitle {
       font-size: 0.75rem;
       color: var(--text-muted);
-      margin-left: 0.5rem;
+      margin-left: 0.4rem;
       padding-left: 0.5rem;
       border-left: 1px solid var(--border);
     }
@@ -110,7 +112,7 @@
     }
 
     .tab-btn {
-      padding: 0.45rem 0.9rem;
+      padding: 0.45rem 0.85rem;
       border: none;
       background: transparent;
       color: var(--text-muted);
@@ -123,6 +125,7 @@
       align-items: center;
       gap: 0.4rem;
       transition: all 0.15s ease;
+      white-space: nowrap;
     }
 
     .tab-btn:hover {
@@ -151,14 +154,15 @@
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
+      flex-wrap: wrap;
     }
 
     .action-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      padding: 0.45rem 0.85rem;
+      gap: 0.35rem;
+      padding: 0.45rem 0.75rem;
       border-radius: 6px;
       font-size: 0.8rem;
       font-weight: 600;
@@ -169,11 +173,25 @@
       color: var(--text-main);
       cursor: pointer;
       transition: all 0.15s ease;
+      white-space: nowrap;
     }
 
     .action-btn:hover {
       background: var(--bg-subtle);
       border-color: var(--border-dark);
+    }
+
+    .action-btn.direct-open {
+      background: #0F172A;
+      color: #F8FAFC;
+      border-color: #0F172A;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .action-btn.direct-open:hover {
+      background: #1E293B;
+      border-color: #1E293B;
+      color: #FFFFFF;
     }
 
     .action-btn.primary {
@@ -183,14 +201,32 @@
     }
 
     .action-btn.primary:hover {
-      background: #172554;
+      background: var(--primary-hover);
+    }
+
+    /* Mobile Quick Open Banner */
+    .mobile-reader-banner {
+      display: none;
+      background: #FEF3C7;
+      border-bottom: 1px solid #FDE68A;
+      padding: 0.55rem 1rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #92400E;
+    }
+
+    .mobile-reader-banner a {
+      color: #78350F;
+      font-weight: 700;
+      text-decoration: underline;
+      margin-left: 0.3rem;
     }
 
     /* Viewer Controls Bar */
     .controls-bar {
       background: var(--bg-panel);
       border-bottom: 1px solid var(--border);
-      padding: 0.5rem 1.25rem;
+      padding: 0.5rem 1rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -198,17 +234,21 @@
       margin: 0 auto;
       width: 100%;
       font-size: 0.82rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
     .pager-controls {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
+      flex-wrap: wrap;
     }
 
     .icon-btn {
-      width: 30px;
+      min-width: 30px;
       height: 30px;
+      padding: 0 0.4rem;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -240,7 +280,7 @@
     .view-mode-toggle {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
     }
 
     .status-pill {
@@ -268,7 +308,7 @@
       max-width: 1440px;
       margin: 0 auto;
       width: 100%;
-      padding: 1.5rem 1.25rem 3rem;
+      padding: 1.25rem 1rem 3rem;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -281,7 +321,7 @@
       background: var(--bg-panel);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 1rem 1.25rem;
+      padding: 0.85rem 1rem;
       margin-bottom: 1.25rem;
       box-shadow: var(--shadow-sm);
     }
@@ -289,8 +329,10 @@
     .module-overview-header {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: center;
       margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+      gap: 0.4rem;
     }
 
     .module-overview-title {
@@ -299,7 +341,7 @@
       color: var(--text-main);
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
 
     .q-list {
@@ -332,7 +374,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1.25rem;
     }
 
     .pdf-page-wrapper {
@@ -388,19 +430,43 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* Responsive */
+    /* Responsive adjustments */
     @media (max-width: 768px) {
+      .mobile-reader-banner {
+        display: block;
+      }
       .nav-container {
         flex-direction: column;
         align-items: stretch;
       }
+      .brand {
+        justify-content: space-between;
+      }
       .brand-subtitle {
         display: none;
+      }
+      .module-tabs {
+        width: 100%;
+        overflow-x: auto;
+      }
+      .module-tabs .tab-btn {
+        flex: 1;
+        justify-content: center;
+      }
+      .header-actions {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .action-btn {
+        justify-content: center;
+        padding: 0.5rem 0.4rem;
+        font-size: 0.75rem;
       }
       .controls-bar {
         flex-direction: column;
         gap: 0.5rem;
-        align-items: stretch;
+        align-items: center;
       }
       .pager-controls {
         justify-content: center;
@@ -409,6 +475,12 @@
   </style>
 </head>
 <body>
+
+  <!-- Mobile Notification / Direct Link -->
+  <div class="mobile-reader-banner">
+    📱 <strong>Phone View:</strong> For pinch-to-zoom & crystal-clear reading,
+    <a id="mobile-direct-link" href="pdfs/Module4_Deep_Learning_Answers.pdf" target="_blank" rel="noopener">Open in Chrome / PDF Viewer ↗</a>
+  </div>
 
   <!-- Top Navigation -->
   <header>
@@ -433,6 +505,13 @@
       </div>
 
       <div class="header-actions">
+        <!-- Direct Native PDF Viewer Link -->
+        <a id="direct-open-btn" href="pdfs/Module4_Deep_Learning_Answers.pdf" target="_blank" rel="noopener" class="action-btn direct-open" title="Open full PDF directly in Chrome or native viewer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Open in PDF Viewer
+        </a>
+
+        <!-- Download Button -->
         <a id="download-btn" href="pdfs/Module4_Deep_Learning_Answers.pdf" download class="action-btn primary" title="Download current module PDF for offline study">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
           Download PDF
@@ -447,16 +526,17 @@
       <button class="icon-btn" id="prev-page" onclick="prevPage()" title="Previous Page">‹</button>
       <span class="page-indicator" id="page-indicator">Page 1 / 18</span>
       <button class="icon-btn" id="next-page" onclick="nextPage()" title="Next Page">›</button>
-      <div style="border-left: 1px solid var(--border); height: 18px; margin: 0 0.4rem;"></div>
-      <button class="icon-btn" onclick="zoomIn()" title="Zoom In">+</button>
-      <button class="icon-btn" onclick="zoomOut()" title="Zoom Out">−</button>
+      <div style="border-left: 1px solid var(--border); height: 18px; margin: 0 0.3rem;"></div>
+      <button class="icon-btn" onclick="zoomIn()" title="Zoom In" style="font-size: 0.95rem;">+</button>
+      <button class="icon-btn" onclick="zoomOut()" title="Zoom Out" style="font-size: 0.95rem;">−</button>
       <button class="icon-btn" onclick="resetZoom()" title="Reset Zoom" style="width: auto; padding: 0 0.5rem; font-size: 0.72rem;">Fit</button>
+      <button class="icon-btn" onclick="setPhoneZoom()" title="Mobile Optimized Zoom" style="width: auto; padding: 0 0.5rem; font-size: 0.72rem; color: var(--primary);">200%</button>
     </div>
 
     <div class="view-mode-toggle">
       <span class="status-pill">
         <span class="status-dot"></span>
-        Zero External Network Dependencies (Fully Vendored)
+        Zero External Dependencies (Offline Ready)
       </span>
     </div>
   </div>
@@ -470,7 +550,7 @@
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
           Module 4 Contents
         </span>
-        <span style="font-size: 0.72rem; color: var(--text-muted);">Click topic to jump</span>
+        <span style="font-size: 0.72rem; color: var(--text-muted);">Tap question to scroll</span>
       </div>
       <ul class="q-list" id="q-nav-list">
         <!-- Rendered dynamically -->
@@ -519,8 +599,9 @@
     let currentPdfDoc = null;
     let totalPages = 0;
     let currentPageNum = 1;
-    let currentScale = 1.35;
-    let isRendering = false;
+    // On mobile devices, start with a larger crisp scale factor for readability
+    const isMobile = window.innerWidth <= 768;
+    let currentScale = isMobile ? 1.85 : 1.35;
 
     async function loadPdf(modId) {
       currentModule = modId;
@@ -533,9 +614,11 @@
         </div>
       `;
 
-      // Update Header & Tabs
+      // Update Navigation & Action Links
       document.getElementById('tab-mod4').classList.toggle('active', modId === 4);
       document.getElementById('tab-mod5').classList.toggle('active', modId === 5);
+      document.getElementById('direct-open-btn').setAttribute('href', mod.file);
+      document.getElementById('mobile-direct-link').setAttribute('href', mod.file);
       document.getElementById('download-btn').setAttribute('href', mod.file);
       document.getElementById('overview-title').textContent = mod.title;
 
@@ -563,7 +646,7 @@
           <div class="loading-state">
             <p style="color: #DC2626; font-weight: 600;">Failed to load PDF</p>
             <p style="font-size: 0.8rem; margin-top: 0.5rem;">${err.message}</p>
-            <p style="margin-top: 1rem;"><a href="${mod.file}" download class="action-btn">Download PDF directly</a></p>
+            <p style="margin-top: 1rem;"><a href="${mod.file}" target="_blank" class="action-btn direct-open">Open directly in PDF Viewer</a></p>
           </div>
         `;
       }
@@ -574,27 +657,36 @@
       const container = document.getElementById('pdf-container');
       container.innerHTML = '';
 
-      // Determine responsive width
-      const maxWidth = Math.min(window.innerWidth - 48, 920);
+      // High-DPI responsive rendering calculation
+      const dpr = window.devicePixelRatio || 1;
+      const baseWidth = Math.min(window.innerWidth - (window.innerWidth < 600 ? 20 : 48), 920);
 
       for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
         const page = await currentPdfDoc.getPage(pageNum);
         const unscaledViewport = page.getViewport({ scale: 1.0 });
-        const scale = (maxWidth / unscaledViewport.width) * (currentScale / 1.35);
-        const viewport = page.getViewport({ scale: scale });
+        
+        // CSS display scale
+        const cssScale = (baseWidth / unscaledViewport.width) * (currentScale / 1.35);
+        const displayViewport = page.getViewport({ scale: cssScale });
+        
+        // Crisp canvas backing store scale for high-density phone screens
+        const renderViewport = page.getViewport({ scale: cssScale * Math.min(dpr, 2.5) });
 
         const wrapper = document.createElement('div');
         wrapper.className = 'pdf-page-wrapper';
         wrapper.id = `page-wrap-${pageNum}`;
+        wrapper.style.width = `${displayViewport.width}px`;
 
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
+        canvas.width = renderViewport.width;
+        canvas.height = renderViewport.height;
+        canvas.style.width = `${displayViewport.width}px`;
+        canvas.style.height = `${displayViewport.height}px`;
 
         const footer = document.createElement('div');
         footer.className = 'page-footer-label';
-        footer.textContent = `Page ${pageNum} of ${totalPages}`;
+        footer.innerHTML = `<span>Page ${pageNum} of ${totalPages}</span> <a href="${MODULES[currentModule].file}#page=${pageNum}" target="_blank" style="margin-left:8px; color:var(--primary); text-decoration:none;">Open in Chrome ↗</a>`;
 
         wrapper.appendChild(canvas);
         wrapper.appendChild(footer);
@@ -602,7 +694,7 @@
 
         await page.render({
           canvasContext: context,
-          viewport: viewport
+          viewport: renderViewport
         }).promise;
       }
 
@@ -621,7 +713,7 @@
             }
           }
         });
-      }, { threshold: 0.4 });
+      }, { threshold: 0.3 });
 
       for (let i = 1; i <= totalPages; i++) {
         const el = document.getElementById(`page-wrap-${i}`);
@@ -657,17 +749,22 @@
     }
 
     function zoomIn() {
-      currentScale = Math.min(currentScale + 0.15, 2.0);
+      currentScale = Math.min(currentScale + 0.25, 3.0);
       renderAllPages();
     }
 
     function zoomOut() {
-      currentScale = Math.max(currentScale - 0.15, 0.8);
+      currentScale = Math.max(currentScale - 0.25, 0.8);
       renderAllPages();
     }
 
     function resetZoom() {
-      currentScale = 1.35;
+      currentScale = isMobile ? 1.85 : 1.35;
+      renderAllPages();
+    }
+
+    function setPhoneZoom() {
+      currentScale = 2.2;
       renderAllPages();
     }
 

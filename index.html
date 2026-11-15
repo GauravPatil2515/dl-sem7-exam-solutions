@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Learning — MU Exam Solutions</title>
+  <meta name="description" content="Offline-ready exam solutions portal for Mumbai University Sem 7 Deep Learning (Module 4 & 5)">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F9F8F6;
+      --bg-panel: #FFFFFF;
+      --bg-subtle: #F3F1EC;
+      --text-main: #1D1D1F;
+      --text-muted: #5C6470;
+      --border: #E5E1D8;
+      --border-dark: #D4CEBF;
+      --primary: #1E3A8A;
+      --primary-light: #EFF6FF;
+      --accent: #B45309;
+      --accent-subtle: #FEF3C7;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-serif: 'Crimson Pro', Georgia, serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Navigation */
+    header {
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-badge {
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .brand-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
+    }
+
+    .brand-subtitle {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-left: 0.5rem;
+      padding-left: 0.5rem;
+      border-left: 1px solid var(--border);
+    }
+
+    /* Module Tabs */
+    .module-tabs {
+      display: flex;
+      background: var(--bg-subtle);
+      padding: 0.25rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      gap: 0.25rem;
+    }
+
+    .tab-btn {
+      padding: 0.45rem 0.9rem;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.15s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+    }
+
+    .tab-btn.active {
+      background: var(--bg-panel);
+      color: var(--primary);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    .tab-btn .badge {
+      font-size: 0.68rem;
+      background: rgba(0,0,0,0.06);
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+    }
+
+    .tab-btn.active .badge {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    /* Actions */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      font-family: var(--font-body);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      background: var(--bg-panel);
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .action-btn:hover {
+      background: var(--bg-subtle);
+      border-color: var(--border-dark);
+    }
+
+    .action-btn.primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .action-btn.primary:hover {
+      background: #172554;
+    }
+
+    /* Viewer Controls Bar */
+    .controls-bar {
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border);
+      padding: 0.5rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1440px;
+      margin: 0 auto;
+      width: 100%;
+      font-size: 0.82rem;
+    }
+
+    .pager-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .icon-btn {
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      background: var(--bg-panel);
+      border-radius: 5px;
+      cursor: pointer;
+      color: var(--text-main);
+      font-weight: bold;
+      transition: all 0.12s ease;
+    }
+
+    .icon-btn:hover:not(:disabled) {
+      background: var(--bg-subtle);
+    }
+
+    .icon-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .page-indicator {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      padding: 0 0.4rem;
+    }
+
+    .view-mode-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+      color: #065F46;
+      background: #D1FAE5;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      font-weight: 500;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #059669;
+    }
+
+    /* Main Container */
+    main {
+      flex: 1;
+      max-width: 1440px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 1.5rem 1.25rem 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Index Panel (Questions Overview) */
+    .module-overview {
+      width: 100%;
+      max-width: 900px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .module-overview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.5rem;
+    }
+
+    .module-overview-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .q-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      list-style: none;
+    }
+
+    .q-tag {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .q-tag:hover {
+      background: var(--primary-light);
+      color: var(--primary);
+      border-color: #BFDBFE;
+    }
+
+    /* PDF Canvas Container */
+    #pdf-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .pdf-page-wrapper {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      max-width: 100%;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .pdf-page-wrapper:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.09);
+    }
+
+    .pdf-page-wrapper canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .page-footer-label {
+      text-align: right;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      background: var(--bg-subtle);
+      border-top: 1px solid var(--border);
+    }
+
+    /* Loading Spinner */
+    .loading-state {
+      padding: 4rem 2rem;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    .spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid var(--border);
+      border-top: 3px solid var(--primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 1rem;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .brand-subtitle {
+        display: none;
+      }
+      .controls-bar {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: stretch;
+      }
+      .pager-controls {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header>
+    <div class="nav-container">
+      <div class="brand">
+        <span class="brand-badge">MU REV-2019 'C'</span>
+        <div>
+          <span class="brand-title">Deep Learning</span>
+          <span class="brand-subtitle">Semester 7 End-Sem Solutions</span>
+        </div>
+      </div>
+
+      <div class="module-tabs" role="tablist">
+        <button class="tab-btn active" id="tab-mod4" onclick="switchModule(4)">
+          <span>Module 4: CNN</span>
+          <span class="badge">6 Ans (18p)</span>
+        </button>
+        <button class="tab-btn" id="tab-mod5" onclick="switchModule(5)">
+          <span>Module 5: RNN</span>
+          <span class="badge">In Progress (3p)</span>
+        </button>
+      </div>
+
+      <div class="header-actions">
+        <a id="download-btn" href="pdfs/Module4_Deep_Learning_Answers.pdf" download class="action-btn primary" title="Download current module PDF for offline study">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Download PDF
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Controls Bar -->
+  <div class="controls-bar">
+    <div class="pager-controls">
+      <button class="icon-btn" id="prev-page" onclick="prevPage()" title="Previous Page">‹</button>
+      <span class="page-indicator" id="page-indicator">Page 1 / 18</span>
+      <button class="icon-btn" id="next-page" onclick="nextPage()" title="Next Page">›</button>
+      <div style="border-left: 1px solid var(--border); height: 18px; margin: 0 0.4rem;"></div>
+      <button class="icon-btn" onclick="zoomIn()" title="Zoom In">+</button>
+      <button class="icon-btn" onclick="zoomOut()" title="Zoom Out">−</button>
+      <button class="icon-btn" onclick="resetZoom()" title="Reset Zoom" style="width: auto; padding: 0 0.5rem; font-size: 0.72rem;">Fit</button>
+    </div>
+
+    <div class="view-mode-toggle">
+      <span class="status-pill">
+        <span class="status-dot"></span>
+        Zero External Network Dependencies (Fully Vendored)
+      </span>
+    </div>
+  </div>
+
+  <!-- Main Viewport -->
+  <main>
+    <!-- Syllabus Index / Fast Jump -->
+    <div class="module-overview" id="overview-card">
+      <div class="module-overview-header">
+        <span class="module-overview-title" id="overview-title">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          Module 4 Contents
+        </span>
+        <span style="font-size: 0.72rem; color: var(--text-muted);">Click topic to jump</span>
+      </div>
+      <ul class="q-list" id="q-nav-list">
+        <!-- Rendered dynamically -->
+      </ul>
+    </div>
+
+    <!-- PDF Canvas Container -->
+    <div id="pdf-container">
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading document...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Vendored PDF.js for 100% Offline Resilience -->
+  <script src="pdf.min.js"></script>
+  <script>
+    if (typeof pdfjsLib !== 'undefined') {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.min.js';
+    }
+
+    const MODULES = {
+      4: {
+        title: "Module 4: Convolutional Neural Networks (CNN)",
+        file: "pdfs/Module4_Deep_Learning_Answers.pdf",
+        questions: [
+          { name: "Q1. CNN Architecture & Working", page: 1 },
+          { name: "Q2. Convolution, Padding & Stride", page: 4 },
+          { name: "Q3. ResNet Architecture & Skip Connections", page: 7 },
+          { name: "Q4. AlexNet Architecture & Innovations", page: 10 },
+          { name: "Q5. LeNet-5 Architecture & Digit Recognition", page: 13 },
+          { name: "Q6. Comparative Analysis (LeNet vs AlexNet vs ResNet)", page: 16 }
+        ]
+      },
+      5: {
+        title: "Module 5: Recurrent Neural Networks (RNN)",
+        file: "pdfs/Module5_Deep_Learning_Answers.pdf",
+        questions: [
+          { name: "Q1. RNN Architecture, Unfolding & Working", page: 1 }
+        ]
+      }
+    };
+
+    let currentModule = 4;
+    let currentPdfDoc = null;
+    let totalPages = 0;
+    let currentPageNum = 1;
+    let currentScale = 1.35;
+    let isRendering = false;
+
+    async function loadPdf(modId) {
+      currentModule = modId;
+      const mod = MODULES[modId];
+      const container = document.getElementById('pdf-container');
+      container.innerHTML = `
+        <div class="loading-state">
+          <div class="spinner"></div>
+          <p>Rendering ${mod.title}...</p>
+        </div>
+      `;
+
+      // Update Header & Tabs
+      document.getElementById('tab-mod4').classList.toggle('active', modId === 4);
+      document.getElementById('tab-mod5').classList.toggle('active', modId === 5);
+      document.getElementById('download-btn').setAttribute('href', mod.file);
+      document.getElementById('overview-title').textContent = mod.title;
+
+      // Update Fast Jump Tags
+      const qList = document.getElementById('q-nav-list');
+      qList.innerHTML = '';
+      mod.questions.forEach(q => {
+        const li = document.createElement('li');
+        li.className = 'q-tag';
+        li.textContent = `${q.name} (p.${q.page})`;
+        li.onclick = () => jumpToPage(q.page);
+        qList.appendChild(li);
+      });
+
+      try {
+        const loadingTask = pdfjsLib.getDocument(mod.file);
+        currentPdfDoc = await loadingTask.promise;
+        totalPages = currentPdfDoc.numPages;
+        currentPageNum = 1;
+        updatePagerIndicator();
+        renderAllPages();
+      } catch (err) {
+        console.error("PDF Load Error:", err);
+        container.innerHTML = `
+          <div class="loading-state">
+            <p style="color: #DC2626; font-weight: 600;">Failed to load PDF</p>
+            <p style="font-size: 0.8rem; margin-top: 0.5rem;">${err.message}</p>
+            <p style="margin-top: 1rem;"><a href="${mod.file}" download class="action-btn">Download PDF directly</a></p>
+          </div>
+        `;
+      }
+    }
+
+    async function renderAllPages() {
+      if (!currentPdfDoc) return;
+      const container = document.getElementById('pdf-container');
+      container.innerHTML = '';
+
+      // Determine responsive width
+      const maxWidth = Math.min(window.innerWidth - 48, 920);
+
+      for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
+        const page = await currentPdfDoc.getPage(pageNum);
+        const unscaledViewport = page.getViewport({ scale: 1.0 });
+        const scale = (maxWidth / unscaledViewport.width) * (currentScale / 1.35);
+        const viewport = page.getViewport({ scale: scale });
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'pdf-page-wrapper';
+        wrapper.id = `page-wrap-${pageNum}`;
+
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+
+        const footer = document.createElement('div');
+        footer.className = 'page-footer-label';
+        footer.textContent = `Page ${pageNum} of ${totalPages}`;
+
+        wrapper.appendChild(canvas);
+        wrapper.appendChild(footer);
+        container.appendChild(wrapper);
+
+        await page.render({
+          canvasContext: context,
+          viewport: viewport
+        }).promise;
+      }
+
+      setupIntersectionObserver();
+    }
+
+    function setupIntersectionObserver() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const pageId = entry.target.id;
+            const pNum = parseInt(pageId.replace('page-wrap-', ''), 10);
+            if (!isNaN(pNum)) {
+              currentPageNum = pNum;
+              updatePagerIndicator();
+            }
+          }
+        });
+      }, { threshold: 0.4 });
+
+      for (let i = 1; i <= totalPages; i++) {
+        const el = document.getElementById(`page-wrap-${i}`);
+        if (el) observer.observe(el);
+      }
+    }
+
+    function updatePagerIndicator() {
+      document.getElementById('page-indicator').textContent = `Page ${currentPageNum} / ${totalPages}`;
+      document.getElementById('prev-page').disabled = (currentPageNum <= 1);
+      document.getElementById('next-page').disabled = (currentPageNum >= totalPages);
+    }
+
+    function jumpToPage(num) {
+      const el = document.getElementById(`page-wrap-${num}`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        currentPageNum = num;
+        updatePagerIndicator();
+      }
+    }
+
+    function prevPage() {
+      if (currentPageNum > 1) {
+        jumpToPage(currentPageNum - 1);
+      }
+    }
+
+    function nextPage() {
+      if (currentPageNum < totalPages) {
+        jumpToPage(currentPageNum + 1);
+      }
+    }
+
+    function zoomIn() {
+      currentScale = Math.min(currentScale + 0.15, 2.0);
+      renderAllPages();
+    }
+
+    function zoomOut() {
+      currentScale = Math.max(currentScale - 0.15, 0.8);
+      renderAllPages();
+    }
+
+    function resetZoom() {
+      currentScale = 1.35;
+      renderAllPages();
+    }
+
+    function switchModule(modId) {
+      if (currentModule === modId) return;
+      loadPdf(modId);
+    }
+
+    // Service Worker Registration for Complete Offline Capability
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(err => {
+          console.log('SW registration note:', err);
+        });
+      });
+    }
+
+    // Initialize
+    window.addEventListener('DOMContentLoaded', () => {
+      loadPdf(4);
+    });
+  </script>
+</body>
+</html>

@@ -350,8 +350,9 @@
       <div class="module-selector">
         <button class="mod-tab" id="tab-1" onclick="selectModule(1)">Module 1 (MLP · 15p)</button>
         <button class="mod-tab" id="tab-2" onclick="selectModule(2)">Module 2 (Reg & GD · 9p)</button>
-        <button class="mod-tab active" id="tab-4" onclick="selectModule(4)">Module 4 (CNN · 18p)</button>
+        <button class="mod-tab" id="tab-4" onclick="selectModule(4)">Module 4 (CNN · 18p)</button>
         <button class="mod-tab" id="tab-5" onclick="selectModule(5)">Module 5 (RNN · 3p)</button>
+        <button class="mod-tab active" id="tab-6" onclick="selectModule(6)">Module 6 (GAN · 3p)</button>
       </div>
     </div>
   </header>
@@ -460,10 +461,17 @@
         questions: [
           { label: "Q1. RNN Architecture, Unfolding & Equations", page: 1 }
         ]
+      },
+      6: {
+        title: "Module 6: Generative Adversarial Networks (GAN)",
+        file: "pdfs/Module6_Deep_Learning_Answers.pdf",
+        questions: [
+          { label: "Q1. GAN Concept, Architecture & Working", page: 1 }
+        ]
       }
     };
 
-    let activeMod = 4;
+    let activeMod = 6;
     let pdfDoc = null;
 
     async function selectModule(modId) {
@@ -475,6 +483,7 @@
       document.getElementById('tab-2').classList.toggle('active', modId === 2);
       document.getElementById('tab-4').classList.toggle('active', modId === 4);
       document.getElementById('tab-5').classList.toggle('active', modId === 5);
+      document.getElementById('tab-6').classList.toggle('active', modId === 6);
 
       // Update Buttons with direct PDF URLs
       const viewerBtn = document.getElementById('btn-open-viewer');

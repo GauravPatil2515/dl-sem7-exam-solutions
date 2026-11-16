@@ -2,28 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MU Sem 7 DL Solutions (v3 - Nov 16)</title>
-  <meta name="description" content="Direct PDF viewer and fast study portal for Mumbai University Sem 7 Deep Learning">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>MU Sem 7 DL Solutions (Mobile Fast App)</title>
+  <meta name="description" content="Mobile-first high-speed study portal and direct PDF reader for Mumbai University Sem 7 Deep Learning">
+  <meta name="theme-color" content="#0F172A">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@600;700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #F9F8F6;
+      --bg: #F8F9FA;
       --bg-panel: #FFFFFF;
-      --bg-subtle: #F3F1EC;
-      --text-main: #1D1D1F;
-      --text-muted: #555E6D;
-      --border: #E2DDD3;
-      --primary: #1E3A8A;
-      --primary-hover: #172554;
-      --primary-subtle: #EFF6FF;
-      --accent: #B45309;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-      --shadow-md: 0 4px 14px rgba(0,0,0,0.08);
+      --bg-subtle: #F1F3F5;
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+      --border: #E2E8F0;
+      --primary: #1E40AF;
+      --primary-hover: #1E3A8A;
+      --primary-light: #EFF6FF;
+      --accent: #D97706;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
       --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-serif: 'Crimson Pro', Georgia, serif;
       --font-mono: 'JetBrains Mono', monospace;
     }
 
@@ -31,273 +31,336 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    body {
+    html, body {
       background-color: var(--bg);
       color: var(--text-main);
       font-family: var(--font-body);
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    /* Fixed Prominent Top Header */
+    /* Sticky Mobile Header */
     header {
-      background: var(--bg-panel);
-      border-bottom: 2px solid var(--border);
+      background: #0F172A;
+      color: #FFFFFF;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
     }
 
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0.75rem 1rem;
+    .top-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 0.75rem;
-      flex-wrap: wrap;
+      padding: 0.65rem 0.85rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
-    .brand-group {
+    .brand-wrap {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-    }
-
-    .brand-badge {
-      background: var(--primary);
-      color: #fff;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-    }
-
-    .brand-title {
-      font-family: var(--font-serif);
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-
-    /* Tab Switcher */
-    .module-selector {
-      display: flex;
-      background: var(--bg-subtle);
-      border: 1px solid var(--border);
-      padding: 0.25rem;
-      border-radius: 8px;
-      gap: 0.25rem;
-    }
-
-    .mod-tab {
-      padding: 0.5rem 1rem;
-      border: none;
-      background: transparent;
-      color: var(--text-muted);
-      font-family: var(--font-body);
-      font-size: 0.85rem;
-      font-weight: 600;
-      border-radius: 6px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: all 0.15s ease;
-    }
-
-    .mod-tab.active {
-      background: var(--bg-panel);
-      color: var(--primary);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-    }
-
-    /* BIG HERO ACTIONS - ALWAYS VISIBLE */
-    .hero-actions-container {
-      background: #FFFFFF;
-      border-bottom: 1px solid var(--border);
-      padding: 0.75rem 1rem;
-    }
-
-    .hero-actions-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    .hero-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       gap: 0.5rem;
-      padding: 0.75rem 1.4rem;
-      border-radius: 8px;
+    }
+
+    .badge-mu {
+      background: #3B82F6;
+      color: #FFFFFF;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      padding: 0.2rem 0.45rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .brand-name {
       font-size: 0.95rem;
       font-weight: 700;
-      font-family: var(--font-body);
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.1s ease, background 0.15s ease;
+      letter-spacing: -0.01em;
+      color: #FFFFFF;
     }
 
-    .hero-btn:active {
-      transform: scale(0.98);
+    .header-stat {
+      font-size: 0.75rem;
+      color: #94A3B8;
+      font-family: var(--font-mono);
+      font-weight: 600;
     }
 
-    /* High-contrast dark button for Chrome/PDF viewer */
-    .hero-btn-viewer {
-      background: #0F172A;
-      color: #FFFFFF !important;
-      border: 1px solid #0F172A;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.25);
-    }
-
-    .hero-btn-viewer:hover {
+    /* Horizontal Scrollable Tabs on Mobile */
+    .module-nav {
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding: 0.4rem 0.6rem;
+      gap: 0.4rem;
       background: #1E293B;
     }
 
-    /* Primary Blue download button */
-    .hero-btn-download {
-      background: var(--primary);
-      color: #FFFFFF !important;
-      border: 1px solid var(--primary);
+    .module-nav::-webkit-scrollbar {
+      display: none;
     }
 
-    .hero-btn-download:hover {
-      background: var(--primary-hover);
-    }
-
-    /* Sub-bar hint */
-    .viewer-hint {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      display: flex;
+    .mod-pill {
+      flex: 0 0 auto;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #CBD5E1;
+      padding: 0.42rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
+      white-space: nowrap;
+      transition: all 0.15s ease;
     }
 
-    /* Main Container */
-    main {
-      flex: 1;
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-      padding: 1.25rem 1rem 3rem;
+    .mod-pill:active {
+      transform: scale(0.96);
     }
 
-    /* Jump to Question Box */
-    .jump-card {
-      background: var(--bg-panel);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1.25rem;
-      box-shadow: var(--shadow-sm);
+    .mod-pill.active {
+      background: #3B82F6;
+      border-color: #3B82F6;
+      color: #FFFFFF;
+      box-shadow: 0 2px 6px rgba(59, 130, 246, 0.4);
     }
 
-    .jump-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      margin-bottom: 0.6rem;
-      color: var(--text-main);
+    /* Mobile Hero Action Bar */
+    .mobile-hero-actions {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 0.85rem;
+    }
+
+    .action-row {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .jump-chips {
-      display: flex;
-      flex-wrap: wrap;
       gap: 0.5rem;
     }
 
-    .jump-chip {
+    .btn-action {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.75rem 0.6rem;
+      border-radius: 8px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-align: center;
+    }
+
+    .btn-action:active {
+      transform: scale(0.97);
+    }
+
+    .btn-viewer {
+      background: #0F172A;
+      color: #FFFFFF !important;
+      border: 1px solid #0F172A;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.2);
+    }
+
+    .btn-download {
+      background: var(--bg-subtle);
+      color: var(--text-main) !important;
+      border: 1px solid var(--border);
+    }
+
+    /* Quick Tip */
+    .mobile-tip {
+      margin-top: 0.45rem;
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+    }
+
+    /* Main Content Area */
+    main {
+      padding: 0.75rem 0.6rem 4rem;
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Jump to Question Drawer / Horizontal Scroll */
+    .jump-drawer {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem;
+      margin-bottom: 0.85rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .jump-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.55rem;
+    }
+
+    .jump-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .jump-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .jump-scroll-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .jump-btn {
       background: var(--bg-subtle);
       border: 1px solid var(--border);
-      padding: 0.35rem 0.65rem;
-      border-radius: 6px;
-      font-size: 0.8rem;
       color: var(--text-main);
+      padding: 0.38rem 0.65rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
       text-decoration: none;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.3rem;
+      gap: 0.25rem;
+      transition: background 0.15s ease;
     }
 
-    .jump-chip:hover {
-      background: var(--primary-subtle);
-      color: var(--primary);
+    .jump-btn:active, .jump-btn:hover {
+      background: var(--primary-light);
       border-color: #BFDBFE;
+      color: var(--primary);
     }
 
-    /* PDF Rendering Frame */
+    /* Zoom / Reading Tools Floating Dock on Mobile */
+    .reader-dock {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.45rem 0.75rem;
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .dock-label {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .dock-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .dock-btn {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+
+    .dock-btn:active {
+      background: #E2E8F0;
+    }
+
+    /* High Quality Mobile PDF Cards */
     .pdf-render-area {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.5rem;
+      gap: 0.85rem;
+      width: 100%;
     }
 
     .page-box {
       background: #FFFFFF;
       border: 1px solid var(--border);
+      border-radius: 8px;
       box-shadow: var(--shadow-md);
-      border-radius: 4px;
       overflow: hidden;
+      width: 100%;
       max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .page-box canvas {
       display: block;
+      width: 100% !important;
+      height: auto !important;
+      touch-action: pan-x pan-y pinch-zoom;
+    }
+
+    .page-footer-bar {
       width: 100%;
-      height: auto;
-    }
-
-    .page-bar {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 0.5rem 0.85rem;
-      background: var(--bg-subtle);
+      justify-content: space-between;
+      padding: 0.45rem 0.75rem;
+      background: #F8FAFC;
       border-top: 1px solid var(--border);
-      font-size: 0.78rem;
-      font-family: var(--font-mono);
+      font-size: 0.72rem;
       color: var(--text-muted);
+      font-family: var(--font-mono);
     }
 
-    .page-bar a {
+    .page-footer-bar a {
       color: var(--primary);
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
     }
 
+    /* Loading Spinner */
     .loading-state {
-      padding: 4rem 1rem;
+      padding: 3rem 1rem;
       text-align: center;
       color: var(--text-muted);
+      width: 100%;
     }
 
     .spinner {
       width: 32px;
       height: 32px;
-      border: 3px solid var(--border);
+      border: 3px solid #E2E8F0;
       border-top: 3px solid var(--primary);
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
-      margin: 0 auto 0.8rem;
+      margin: 0 auto 0.6rem;
     }
 
     @keyframes spin {
@@ -305,111 +368,154 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* Mobile specific optimizations */
-    @media (max-width: 768px) {
-      .header-inner {
-        flex-direction: column;
-        align-items: stretch;
+    /* Floating bottom mobile bar */
+    .mobile-float-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 0.6rem 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 99;
+    }
+
+    .float-title {
+      color: #F8FAFC;
+      font-size: 0.76rem;
+      font-weight: 600;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 55%;
+    }
+
+    .float-btn {
+      background: #3B82F6;
+      color: #FFFFFF;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.45rem 0.85rem;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* Desktop View Tweaks */
+    @media (min-width: 769px) {
+      .top-bar {
+        padding: 0.85rem 1.5rem;
       }
-      .module-selector {
-        width: 100%;
-      }
-      .mod-tab {
-        flex: 1;
+      .module-nav {
         justify-content: center;
+        padding: 0.5rem 1rem;
       }
-      .hero-actions-inner {
-        flex-direction: column;
-        align-items: stretch;
+      .mobile-hero-actions {
+        max-width: 900px;
+        margin: 0 auto;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        margin-top: 1rem;
       }
-      .hero-btn {
-        width: 100%;
-        padding: 0.85rem 1rem;
-        font-size: 1rem;
-      }
-      .viewer-hint {
-        justify-content: center;
-        text-align: center;
+      .mobile-float-bar {
+        display: none;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Navigation -->
+  <!-- Sticky Header with Horizontal Module Slider -->
   <header>
-    <div class="header-inner">
-      <div class="brand-group">
-        <span class="brand-badge">MU Sem 7 AIML</span>
-        <div>
-          <span class="brand-title">Deep Learning Solutions</span>
-        </div>
+    <div class="top-bar">
+      <div class="brand-wrap">
+        <span class="badge-mu">MU Sem 7 AIML</span>
+        <span class="brand-name">Deep Learning</span>
       </div>
-
-      <!-- Module Switcher Tabs -->
-      <div class="module-selector">
-        <button class="mod-tab" id="tab-1" onclick="selectModule(1)">Module 1 (MLP · 18p)</button>
-        <button class="mod-tab" id="tab-2" onclick="selectModule(2)">Module 2 (Reg & GD · 9p)</button>
-        <button class="mod-tab" id="tab-4" onclick="selectModule(4)">Module 4 (CNN · 18p)</button>
-        <button class="mod-tab" id="tab-5" onclick="selectModule(5)">Module 5 (RNN · 3p)</button>
-        <button class="mod-tab active" id="tab-6" onclick="selectModule(6)">Module 6 (GAN · 9p)</button>
-      </div>
+      <div class="header-stat" id="header-stat-text">57 Pages Live</div>
     </div>
+
+    <!-- Swipeable Module Pills -->
+    <nav class="module-nav" id="module-nav-bar">
+      <button class="mod-pill active" id="tab-1" onclick="selectModule(1)">Mod 1: MLP (18p)</button>
+      <button class="mod-pill" id="tab-2" onclick="selectModule(2)">Mod 2: Reg & GD (9p)</button>
+      <button class="mod-pill" id="tab-4" onclick="selectModule(4)">Mod 4: CNN (18p)</button>
+      <button class="mod-pill" id="tab-5" onclick="selectModule(5)">Mod 5: RNN (3p)</button>
+      <button class="mod-pill" id="tab-6" onclick="selectModule(6)">Mod 6: GAN (9p)</button>
+    </nav>
   </header>
 
-  <!-- PROMINENT BUTTONS BANNER -->
-  <section class="hero-actions-container">
-    <div class="hero-actions-inner">
-      <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; width: 100%; max-width: 600px;">
-        <!-- DIRECT PDF / CHROME VIEWER BUTTON -->
-        <a id="btn-open-viewer" href="pdfs/Module4_Deep_Learning_Answers.pdf" target="_blank" rel="noopener" class="hero-btn hero-btn-viewer">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-          <span>Open in Phone PDF Viewer / Chrome ↗</span>
-        </a>
+  <!-- High-Visibility Action Bar -->
+  <section class="mobile-hero-actions">
+    <div class="action-row">
+      <a id="btn-open-viewer" href="pdfs/Module1_Deep_Learning_Answers.pdf" target="_blank" rel="noopener" class="btn-action btn-viewer">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        <span>Open Phone PDF Viewer ↗</span>
+      </a>
 
-        <!-- DOWNLOAD BUTTON -->
-        <a id="btn-download-pdf" href="pdfs/Module4_Deep_Learning_Answers.pdf" download class="hero-btn hero-btn-download">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-          <span>Download PDF</span>
-        </a>
-      </div>
-
-      <div class="viewer-hint">
-        <span>💡 Best for phone: opens with full pinch-to-zoom & search</span>
-      </div>
+      <a id="btn-download-pdf" href="pdfs/Module1_Deep_Learning_Answers.pdf" download class="btn-action btn-download">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        <span>Download</span>
+      </a>
+    </div>
+    <div class="mobile-tip">
+      <span>📱 Tip: "Open Phone PDF Viewer" allows full pinch zoom and offline study!</span>
     </div>
   </section>
 
   <!-- Main View -->
   <main>
-    <!-- Jump to question list -->
-    <div class="jump-card">
-      <div class="jump-title">
-        <span id="jump-header-text">Questions in Module 4</span>
-        <span style="font-size:0.75rem; color:var(--text-muted); font-weight:normal;">Tap to jump</span>
+    <!-- Question Jump Chips -->
+    <section class="jump-drawer">
+      <div class="jump-header">
+        <span class="jump-title" id="jump-header-title">Questions in Module 1</span>
+        <span class="jump-sub">Tap to scroll</span>
       </div>
-      <div class="jump-chips" id="jump-chips-container">
-        <!-- Injected via JavaScript -->
+      <div class="jump-scroll-row" id="jump-chips-container">
+        <!-- Injected via JS -->
+      </div>
+    </section>
+
+    <!-- Reading Zoom Bar -->
+    <div class="reader-dock">
+      <span class="dock-label">Page Quality:</span>
+      <div class="dock-controls">
+        <button class="dock-btn" onclick="adjustZoom(-0.25)">- Text</button>
+        <button class="dock-btn" onclick="resetZoom()">Default</button>
+        <button class="dock-btn" onclick="adjustZoom(0.3)">+ Text</button>
+        <button class="dock-btn" onclick="adjustZoom(0.8)" style="background:#EFF6FF; border-color:#93C5FD; color:#1E40AF;">Crisp HD</button>
       </div>
     </div>
 
-    <!-- Render Container -->
+    <!-- PDF Render Area -->
     <div class="pdf-render-area" id="render-area">
       <div class="loading-state">
         <div class="spinner"></div>
-        <p>Loading pages...</p>
+        <p>Loading document pages...</p>
       </div>
     </div>
   </main>
 
+  <!-- Floating Sticky Bottom Bar for Mobile Convenience -->
+  <div class="mobile-float-bar">
+    <div class="float-title" id="float-module-title">Mod 1: Multilayer Perceptrons & Optimization</div>
+    <a id="btn-float-open" href="pdfs/Module1_Deep_Learning_Answers.pdf" target="_blank" rel="noopener" class="float-btn">
+      <span>Read in Viewer ↗</span>
+    </a>
+  </div>
+
   <script src="pdf.min.js"></script>
   <script>
-    // Force unregister any old service worker caches to ensure immediate freshness
+    // Clean old caches
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations().then(registrations => {
-        for (let registration of registrations) {
-          registration.unregister();
-        }
+        for (let r of registrations) r.unregister();
       });
       if (window.caches) {
         caches.keys().then(names => {
@@ -436,7 +542,7 @@
         ]
       },
       2: {
-        title: "Module 2: Activation Functions, Optimization & Regularization",
+        title: "Module 2: Activation, Optimization & Regularization",
         file: "pdfs/Module2_Deep_Learning_Answers.pdf",
         questions: [
           { label: "Q1. Significance & Types of Activation Functions", page: 1 },
@@ -474,48 +580,59 @@
       }
     };
 
-    let activeMod = 6;
+    let activeMod = 1;
     let pdfDoc = null;
+    let zoomModifier = 0;
 
     async function selectModule(modId) {
       activeMod = modId;
       const mod = DATA[modId];
 
-      // Update tabs
-      document.getElementById('tab-1').classList.toggle('active', modId === 1);
-      document.getElementById('tab-2').classList.toggle('active', modId === 2);
-      document.getElementById('tab-4').classList.toggle('active', modId === 4);
-      document.getElementById('tab-5').classList.toggle('active', modId === 5);
-      document.getElementById('tab-6').classList.toggle('active', modId === 6);
+      // Update Tab Pill UI
+      [1, 2, 4, 5, 6].forEach(id => {
+        const el = document.getElementById(`tab-${id}`);
+        if (el) el.classList.toggle('active', id === modId);
+      });
 
-      // Update Buttons with direct PDF URLs
+      // Update Action Buttons
       const viewerBtn = document.getElementById('btn-open-viewer');
       const downloadBtn = document.getElementById('btn-download-pdf');
+      const floatBtn = document.getElementById('btn-float-open');
+      const floatTitle = document.getElementById('float-module-title');
+
       viewerBtn.setAttribute('href', mod.file);
       downloadBtn.setAttribute('href', mod.file);
+      floatBtn.setAttribute('href', mod.file);
+      floatTitle.textContent = mod.title;
 
-      // Update Question jump chips
-      document.getElementById('jump-header-text').textContent = `Questions in ${mod.title}`;
+      // Update Jump Chips
+      document.getElementById('jump-header-title').textContent = `${mod.title} (${mod.questions.length} Questions)`;
       const chipsContainer = document.getElementById('jump-chips-container');
       chipsContainer.innerHTML = '';
       mod.questions.forEach(q => {
-        const chip = document.createElement('a');
-        chip.className = 'jump-chip';
-        chip.textContent = `${q.label} (p.${q.page})`;
-        chip.onclick = (e) => {
-          e.preventDefault();
+        const btn = document.createElement('button');
+        btn.className = 'jump-btn';
+        btn.textContent = `${q.label} (p.${q.page})`;
+        btn.onclick = () => {
           const target = document.getElementById(`page-node-${q.page}`);
-          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
         };
-        chipsContainer.appendChild(chip);
+        chipsContainer.appendChild(btn);
       });
 
-      // Render PDF pages
+      // Render PDF
+      await renderCurrentModule();
+    }
+
+    async function renderCurrentModule() {
+      const mod = DATA[activeMod];
       const renderArea = document.getElementById('render-area');
       renderArea.innerHTML = `
         <div class="loading-state">
           <div class="spinner"></div>
-          <p>Rendering ${mod.title}...</p>
+          <p>Rendering ${mod.title} for mobile...</p>
         </div>
       `;
 
@@ -524,16 +641,19 @@
         renderArea.innerHTML = '';
 
         const dpr = window.devicePixelRatio || 1;
-        const screenWidth = Math.min(window.innerWidth - 32, 900);
+        // On phone, use full available width with small margin
+        const screenWidth = Math.min(window.innerWidth - 16, 860);
 
         for (let p = 1; p <= pdfDoc.numPages; p++) {
           const page = await pdfDoc.getPage(p);
           const rawViewport = page.getViewport({ scale: 1.0 });
 
-          // Scale for mobile phone screen
-          const cssScale = screenWidth / rawViewport.width;
-          const displayViewport = page.getViewport({ scale: cssScale });
-          const renderViewport = page.getViewport({ scale: cssScale * Math.min(dpr, 2.0) });
+          // Scale factor
+          const baseScale = screenWidth / rawViewport.width;
+          const effectiveScale = baseScale + zoomModifier;
+          const displayViewport = page.getViewport({ scale: effectiveScale });
+          // Render with retina backing store (capped at 2.2x for speed & crisp text)
+          const renderViewport = page.getViewport({ scale: effectiveScale * Math.min(dpr, 2.2) });
 
           const box = document.createElement('div');
           box.className = 'page-box';
@@ -546,15 +666,15 @@
           canvas.style.width = `${displayViewport.width}px`;
           canvas.style.height = `${displayViewport.height}px`;
 
-          const bar = document.createElement('div');
-          bar.className = 'page-bar';
-          bar.innerHTML = `
+          const footer = document.createElement('div');
+          footer.className = 'page-footer-bar';
+          footer.innerHTML = `
             <span>Page ${p} of ${pdfDoc.numPages}</span>
-            <a href="${mod.file}#page=${p}" target="_blank" rel="noopener">Open this page in Chrome ↗</a>
+            <a href="${mod.file}#page=${p}" target="_blank" rel="noopener">Open page in PDF app ↗</a>
           `;
 
           box.appendChild(canvas);
-          box.appendChild(bar);
+          box.appendChild(footer);
           renderArea.appendChild(box);
 
           await page.render({
@@ -566,15 +686,26 @@
         console.error("Render error:", err);
         renderArea.innerHTML = `
           <div class="loading-state">
-            <p style="color: #DC2626; font-weight: 700;">Could not render preview</p>
-            <p style="margin-top: 0.8rem;"><a href="${mod.file}" target="_blank" class="hero-btn hero-btn-viewer">Open PDF directly in Viewer</a></p>
+            <p style="color: #DC2626; font-weight: 700;">Mobile preview render paused</p>
+            <p style="margin-top: 0.6rem;"><a href="${mod.file}" target="_blank" class="btn-action btn-viewer">Tap here to open in Phone PDF Viewer</a></p>
           </div>
         `;
       }
     }
 
+    function adjustZoom(delta) {
+      zoomModifier = Math.max(zoomModifier + delta, -0.3);
+      renderCurrentModule();
+    }
+
+    function resetZoom() {
+      zoomModifier = 0;
+      renderCurrentModule();
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
-      selectModule(4);
+      // Default to Module 1
+      selectModule(1);
     });
   </script>
 </body>

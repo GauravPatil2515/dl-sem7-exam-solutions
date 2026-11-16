@@ -438,13 +438,14 @@
         <span class="badge-mu">MU Sem 7 AIML</span>
         <span class="brand-name">Deep Learning</span>
       </div>
-      <div class="header-stat" id="header-stat-text">57 Pages Live</div>
+      <div class="header-stat" id="header-stat-text">60 Pages Live</div>
     </div>
 
     <!-- Swipeable Module Pills -->
     <nav class="module-nav" id="module-nav-bar">
       <button class="mod-pill active" id="tab-1" onclick="selectModule(1)">Mod 1: MLP (18p)</button>
       <button class="mod-pill" id="tab-2" onclick="selectModule(2)">Mod 2: Reg & GD (9p)</button>
+      <button class="mod-pill" id="tab-3" onclick="selectModule(3)">Mod 3: Autoencoders (3p)</button>
       <button class="mod-pill" id="tab-4" onclick="selectModule(4)">Mod 4: CNN (18p)</button>
       <button class="mod-pill" id="tab-5" onclick="selectModule(5)">Mod 5: RNN (3p)</button>
       <button class="mod-pill" id="tab-6" onclick="selectModule(6)">Mod 6: GAN (9p)</button>
@@ -550,6 +551,13 @@
           { label: "Q3. Dropout Regularization & Anti-Overfitting", page: 7 }
         ]
       },
+      3: {
+        title: "Module 3: Autoencoders & Representation Learning",
+        file: "pdfs/Module3_Deep_Learning_Answers.pdf",
+        questions: [
+          { label: "Q2. Denoising Autoencoder (DAE) Architecture & Working", page: 1 }
+        ]
+      },
       4: {
         title: "Module 4: Convolutional Neural Networks (CNN)",
         file: "pdfs/Module4_Deep_Learning_Answers.pdf",
@@ -589,7 +597,7 @@
       const mod = DATA[modId];
 
       // Update Tab Pill UI
-      [1, 2, 4, 5, 6].forEach(id => {
+      [1, 2, 3, 4, 5, 6].forEach(id => {
         const el = document.getElementById(`tab-${id}`);
         if (el) el.classList.toggle('active', id === modId);
       });

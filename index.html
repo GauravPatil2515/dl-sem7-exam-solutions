@@ -119,21 +119,185 @@
       box-shadow: 0 0 50px rgba(0,0,0,0.06);
     }
 
+    /* =========================================================================
+       RESPONSIVE DESKTOP & TABLET ADAPTATION (min-width: 768px)
+       Preserves 100% of mobile view while giving desktop a spacious layout
+       ========================================================================= */
     @media (min-width: 768px) {
       body {
-        background-color: #E6ECE8;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 1.5rem 0;
+        background-color: var(--bg);
+        display: block;
+        padding: 0;
       }
+
+      body.dark-mode {
+        background-color: var(--bg);
+      }
+
+      /* Allow viewport to breathe gracefully on tablet/desktop */
       .app-viewport {
-        border-radius: 36px;
-        overflow: hidden;
-        min-height: 920px;
-        height: 94vh;
-        border: 8px solid #FFFFFF;
-        box-shadow: 0 25px 60px -15px rgba(15, 35, 25, 0.2);
+        max-width: 980px;
+        min-height: 100vh;
+        height: auto;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 0 1.5rem 5rem 1.5rem;
+      }
+
+      /* Ambient wave header expands across desktop */
+      .wave-bg-top {
+        height: 320px;
+        background: radial-gradient(circle at 50% -20%, rgba(16, 185, 129, 0.16), transparent 75%);
+      }
+
+      /* Screen View Containers on Desktop */
+      .screen-view {
+        padding-bottom: 5rem;
+      }
+
+      /* Welcome Screen Desktop Layout */
+      .welcome-container {
+        max-width: 580px;
+        margin: 0 auto;
+        min-height: 82vh;
+        justify-content: center;
+        gap: 2rem;
+        padding: 3rem 1.5rem;
+      }
+
+      .welcome-stats-badges {
+        max-width: 440px;
+        margin: 0 auto 1.5rem auto;
+      }
+
+      /* Home Screen Header & Hero Card */
+      .ios-header {
+        max-width: 100%;
+        padding: 1.4rem 0 1rem 0;
+      }
+
+      .hub-hero-card {
+        padding: 1.5rem 2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .hub-hero-text h3 {
+        font-size: 1.55rem;
+      }
+
+      /* 6 Quick Action Grid -> 6 columns in one clean row on desktop */
+      .quick-grid {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .quick-grid-card {
+        padding: 1.15rem 0.6rem;
+      }
+
+      /* Modules List -> 2-Column Responsive Grid */
+      .modules-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.1rem;
+      }
+
+      /* Filter Pills Row on Desktop */
+      .filter-pills-row {
+        justify-content: flex-start;
+        padding: 0.2rem 0 1rem 0;
+      }
+
+      /* Question Bank -> 2-Column Grid */
+      .bank-question-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      /* Quick Revise -> 2-Column Grid */
+      .revise-category-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      /* Module Detail Screen Questions -> 2 Columns */
+      .detail-questions-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.9rem;
+      }
+
+      .detail-hero-card {
+        max-width: 620px;
+        margin: 0 auto 1.5rem auto;
+      }
+
+      .detail-meta-text {
+        justify-content: center;
+      }
+
+      .detail-bottom-dock {
+        max-width: 520px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 9999px;
+        bottom: 1rem;
+        box-shadow: 0 12px 36px rgba(0,0,0,0.14);
+      }
+
+      /* PDF Canvas Container on Desktop: generous readable width */
+      .reader-canvas-wrap {
+        padding: 1rem 0 7rem 0;
+      }
+
+      .pdf-page-card {
+        max-width: 840px;
+        margin: 0 auto;
+        border-radius: 16px;
+      }
+
+      /* Floating Dock Centered & Proportional like macOS Dock */
+      .bottom-tab-bar {
+        max-width: 520px;
+        bottom: 1.25rem;
+        border-radius: 9999px;
+        border: 1px solid var(--border-subtle);
+        box-shadow: 0 16px 40px rgba(4, 120, 87, 0.16);
+      }
+
+      .floating-reader-dock {
+        bottom: 1.5rem;
+        border-radius: 9999px;
+      }
+
+      /* Modal Bottom Sheet on Desktop transforms into centered floating modal */
+      .modal-overlay {
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+
+      .modal-sheet {
+        max-width: 580px;
+        border-radius: 28px;
+        max-height: 80vh;
+        margin: 0 auto;
+      }
+
+      /* Topic Segmented Bar on Desktop */
+      .topic-switcher-container {
+        max-width: 540px;
+        margin: 0.4rem auto 1rem auto;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .app-viewport {
+        max-width: 1080px;
       }
     }
 
@@ -2542,6 +2706,18 @@
       zoomLevel = Math.max(-0.4, Math.min(1.8, zoomLevel + delta));
       rerenderAllPages();
     }
+
+    
+    /* Debounced Window Resize Handler for Desktop/Tablet Resizing */
+    let desktopResizeTimer = null;
+    window.addEventListener('resize', () => {
+      if (currentTab === 'reader' && pdfDoc) {
+        clearTimeout(desktopResizeTimer);
+        desktopResizeTimer = setTimeout(() => {
+          rerenderAllPages();
+        }, 220);
+      }
+    });
 
     function resetZoom() {
       zoomLevel = 0.25;

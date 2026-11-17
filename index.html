@@ -1310,6 +1310,57 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+
+    /* Topic / Subject Switcher Bar */
+    .topic-switcher-container {
+      width: 100%;
+      margin: 0.5rem 0 0.9rem 0;
+    }
+    .topic-segmented-bar {
+      display: flex;
+      background: rgba(4, 120, 87, 0.08);
+      border: 1px solid rgba(4, 120, 87, 0.16);
+      border-radius: 9999px;
+      padding: 3px;
+      gap: 4px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    body.dark-mode .topic-segmented-bar {
+      background: rgba(16, 185, 129, 0.08);
+      border-color: rgba(16, 185, 129, 0.22);
+    }
+    .topic-pill {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 7px 10px;
+      border-radius: 9999px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      white-space: nowrap;
+    }
+    .topic-pill.active {
+      background: var(--brand-emerald);
+      color: #FFFFFF;
+      box-shadow: 0 2px 8px rgba(4, 120, 87, 0.28);
+    }
+    .topic-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.7;
+    }
+
   </style>
 </head>
 <body>
@@ -1425,6 +1476,18 @@
       </header>
 
       <div class="screen-content">
+        <!-- Topic Switcher in Home -->
+        <div class="topic-switcher-container">
+          <div class="topic-segmented-bar">
+            <button class="topic-pill active topic-pill-btn-dl" onclick="switchTopic('dl')">
+              <span class="topic-dot"></span> Deep Learning (CSC701)
+            </button>
+            <button class="topic-pill topic-pill-btn-bda" onclick="switchTopic('bda')">
+              <span class="topic-dot"></span> Big Data Analytics (CSDC7013)
+            </button>
+          </div>
+        </div>
+
         <!-- Hero Revision Hub Card with Cute Books Illustration -->
         <div class="hub-hero-card" onclick="switchTab('modules')">
           <div class="hub-hero-text">
@@ -1529,6 +1592,18 @@
         <button class="icon-btn" onclick="switchTab('question-bank')">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </button>
+      </div>
+
+      <!-- Topic Switcher in Modules -->
+      <div class="topic-switcher-container" style="padding: 0 1.25rem;">
+        <div class="topic-segmented-bar">
+          <button class="topic-pill active topic-pill-btn-dl" onclick="switchTopic('dl')">
+            <span class="topic-dot"></span> Deep Learning
+          </button>
+          <button class="topic-pill topic-pill-btn-bda" onclick="switchTopic('bda')">
+            <span class="topic-dot"></span> Big Data Analytics
+          </button>
+        </div>
       </div>
 
       <!-- Filter Chips Row -->
@@ -1674,6 +1749,18 @@
       </div>
 
       <div class="screen-content">
+        <!-- Topic Switcher in Quick Revise -->
+        <div class="topic-switcher-container">
+          <div class="topic-segmented-bar">
+            <button class="topic-pill active topic-pill-btn-dl" onclick="switchTopic('dl')">
+              <span class="topic-dot"></span> Deep Learning
+            </button>
+            <button class="topic-pill topic-pill-btn-bda" onclick="switchTopic('bda')">
+              <span class="topic-dot"></span> Big Data Analytics
+            </button>
+          </div>
+        </div>
+
         <!-- Segmented Filter -->
         <div class="segmented-control" style="margin-bottom: 1.1rem;">
           <button class="segment-btn active" onclick="filterRevision('notes', this)">Notes</button>
@@ -1759,6 +1846,18 @@
         <button class="icon-btn" onclick="toggleBankFilter()">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
         </button>
+      </div>
+
+      <!-- Topic Switcher in Question Bank -->
+      <div class="topic-switcher-container" style="padding: 0 1.25rem;">
+        <div class="topic-segmented-bar">
+          <button class="topic-pill active topic-pill-btn-dl" onclick="switchTopic('dl')">
+            <span class="topic-dot"></span> Deep Learning
+          </button>
+          <button class="topic-pill topic-pill-btn-bda" onclick="switchTopic('bda')">
+            <span class="topic-dot"></span> Big Data Analytics
+          </button>
+        </div>
       </div>
 
       <!-- Filter Chips -->
@@ -1871,111 +1970,231 @@
     }
 
     /* =========================================================================
-       DATA REGISTRY (75 Pages across 6 Modules - MU Sem 7 Deep Learning)
+       MULTI-TOPIC DATA REGISTRY (Deep Learning & Big Data Analytics - MU Sem 7)
        ========================================================================= */
-    const DATA = {
-      1: {
-        id: 1,
-        title: "Multilayer Perceptrons & Optimization",
-        short: "Mod 1: MLP & Optimization",
-        pages: 18,
-        progress: 100,
-        status: "done",
-        file: "pdfs/Module1_Deep_Learning_Answers.pdf?v=dark75p",
-        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="12" r="3"/><line x1="8.59" y1="7.41" x2="15.42" y2="10.59"/><line x1="8.59" y1="16.59" x2="15.42" y2="13.41"/></svg>`,
-        questions: [
-          { qId: "m1q1", label: "Representation Power of MLPs & XOR", page: 1, tag: "Theory & Proof", marks: "10 Marks" },
-          { qId: "m1q2", label: "Feedforward Neural Networks Architecture", page: 4, tag: "Architecture", marks: "10 Marks" },
-          { qId: "m1q3", label: "Three Classes of Deep Learning (SL, UL, RL)", page: 7, tag: "Comparative Matrix", marks: "10 Marks" },
-          { qId: "m1q4", label: "Gradient Descent & SSE Derivation", page: 10, tag: "Mathematical Derivation", marks: "10 Marks" },
-          { qId: "m1q5", label: "AND Gate Design via Single-Layer Perceptron", page: 13, tag: "Design & Numerical", marks: "10 Marks" },
-          { qId: "m1q6", label: "XOR Gate Design via Multilayer Perceptron", page: 16, tag: "Design & Numerical", marks: "10 Marks" }
-        ]
+    const TOPICS = {
+      dl: {
+        key: "dl",
+        name: "Deep Learning",
+        code: "CSC701",
+        title: "Deep Learning Exam Portal",
+        sub: "Mumbai University • Rev-2019 'C' Scheme • AIML • Sem 7",
+        headerTitle: "MU Sem 7<br>Deep Learning",
+        headerSub: "Revision • Model Answers • Diagrams • Numericals",
+        totalPages: 75,
+        completedPages: 32,
+        progressPct: 42,
+        hubSub: "6 Modules • 75 Pages",
+        defaultModule: 1,
+        modules: {
+          1: {
+            id: 1,
+            title: "Multilayer Perceptrons & Optimization",
+            short: "Mod 1: MLP & Optimization",
+            pages: 18,
+            progress: 100,
+            status: "done",
+            file: "pdfs/Module1_Deep_Learning_Answers.pdf?v=dark75p",
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="12" r="3"/><line x1="8.59" y1="7.41" x2="15.42" y2="10.59"/><line x1="8.59" y1="16.59" x2="15.42" y2="13.41"/></svg>`,
+            questions: [
+              { qId: "m1q1", label: "Representation Power of MLPs & XOR", page: 1, tag: "Theory & Proof", marks: "10 Marks" },
+              { qId: "m1q2", label: "Feedforward Neural Networks Architecture", page: 4, tag: "Architecture", marks: "10 Marks" },
+              { qId: "m1q3", label: "Three Classes of Deep Learning (SL, UL, RL)", page: 7, tag: "Comparative Matrix", marks: "10 Marks" },
+              { qId: "m1q4", label: "Gradient Descent & SSE Derivation", page: 10, tag: "Mathematical Derivation", marks: "10 Marks" },
+              { qId: "m1q5", label: "AND Gate Design via Single-Layer Perceptron", page: 13, tag: "Design & Numerical", marks: "10 Marks" },
+              { qId: "m1q6", label: "XOR Gate Design via Multilayer Perceptron", page: 16, tag: "Design & Numerical", marks: "10 Marks" }
+            ]
+          },
+          2: {
+            id: 2,
+            title: "Activation, Optimization & Regularization",
+            short: "Mod 2: Activation & Optimization",
+            pages: 12,
+            progress: 60,
+            status: "in-progress",
+            file: "pdfs/Module2_Deep_Learning_Answers.pdf?v=dark75p",
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>`,
+            questions: [
+              { qId: "m2q1", label: "Significance & Types of Activation Functions", page: 1, tag: "Mathematical Curves", marks: "10 Marks" },
+              { qId: "m2q2", label: "Gradient Descent & 3 Methods (BGD, SGD, MBGD)", page: 4, tag: "Optimization", marks: "10 Marks" },
+              { qId: "m2q3", label: "Dropout Regularization & Anti-Overfitting", page: 7, tag: "Regularization", marks: "10 Marks" },
+              { qId: "m2q4", label: "SGD & Momentum Optimization Techniques", page: 10, tag: "Optimization & Numerical", marks: "10 Marks" }
+            ]
+          },
+          3: {
+            id: 3,
+            title: "Autoencoders & Representation Learning",
+            short: "Mod 3: Autoencoders",
+            pages: 12,
+            progress: 0,
+            status: "not-started",
+            file: "pdfs/Module3_Deep_Learning_Answers.pdf?v=dark75p",
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
+            questions: [
+              { qId: "m3q1", label: "Denoising Autoencoder (DAE) Architecture & Working", page: 1, tag: "Architecture", marks: "10 Marks" },
+              { qId: "m3q2", label: "Image Compression Using Autoencoders", page: 4, tag: "Application", marks: "10 Marks" },
+              { qId: "m3q3", label: "Regularization in Autoencoders (Sparsity, CAE, DAE)", page: 7, tag: "Regularization", marks: "10 Marks" },
+              { qId: "m3q4", label: "Undercomplete vs. Overcomplete Autoencoders", page: 10, tag: "Comparative Matrix", marks: "10 Marks" }
+            ]
+          },
+          4: {
+            id: 4,
+            title: "Convolutional Neural Networks (CNN)",
+            short: "Mod 4: CNN",
+            pages: 18,
+            progress: 35,
+            status: "in-progress",
+            file: "pdfs/Module4_Deep_Learning_Answers.pdf?v=dark75p",
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="15" x2="23" y2="15"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="15" x2="4" y2="15"/></svg>`,
+            questions: [
+              { qId: "m4q1", label: "CNN Architecture & Working Principle", page: 1, tag: "Core Architecture", marks: "10 Marks" },
+              { qId: "m4q2", label: "Convolution, Padding & Stride with Formulas", page: 4, tag: "Formulas & Numericals", marks: "10 Marks" },
+              { qId: "m4q3", label: "ResNet Architecture & Skip Connections", page: 7, tag: "Deep Architecture", marks: "10 Marks" },
+              { qId: "m4q4", label: "AlexNet Architecture, Layers & Innovations", page: 10, tag: "Benchmark Network", marks: "10 Marks" },
+              { qId: "m4q5", label: "LeNet-5 Architecture & Digit Recognition", page: 13, tag: "Foundational Network", marks: "10 Marks" },
+              { qId: "m4q6", label: "Comparative Analysis (LeNet vs AlexNet vs ResNet)", page: 16, tag: "Comparative Matrix", marks: "10 Marks" }
+            ]
+          },
+          5: {
+            id: 5,
+            title: "Recurrent Neural Networks (RNN)",
+            short: "Mod 5: RNN",
+            pages: 6,
+            progress: 0,
+            status: "not-started",
+            file: "pdfs/Module5_Deep_Learning_Answers.pdf?v=dark75p",
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
+            questions: [
+              { qId: "m5q1", label: "RNN Architecture, Unfolded Flow & Equations", page: 1, tag: "Sequential Flow", marks: "10 Marks" },
+              { qId: "m5q2", label: "GRU Architecture, Working & LSTM vs GRU", page: 4, tag: "Gated Architecture", marks: "10 Marks" }
+            ]
+          },
+          6: {
+            id: 6,
+            title: "Generative Adversarial Networks (GAN)",
+            short: "Mod 6: GAN",
+            pages: 9,
+            progress: 0,
+            status: "not-started",
+            file: "pdfs/Module6_Deep_Learning_Answers.pdf?v=dark75p",
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`,
+            questions: [
+              { qId: "m6q1", label: "GAN Concept, Architecture & Working Principle", page: 1, tag: "Generative Models", marks: "10 Marks" },
+              { qId: "m6q2", label: "GAN Roles, Minimax Game & Training Dynamics", page: 4, tag: "Game Theory", marks: "10 Marks" },
+              { qId: "m6q3", label: "Real-World Applications of GAN (Image, DeepFake, SR)", page: 7, tag: "Applied DL", marks: "10 Marks" }
+            ]
+          }
+        }
       },
-      2: {
-        id: 2,
-        title: "Activation, Optimization & Regularization",
-        short: "Mod 2: Activation & Optimization",
-        pages: 12,
-        progress: 60,
-        status: "in-progress",
-        file: "pdfs/Module2_Deep_Learning_Answers.pdf?v=dark75p",
-        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>`,
-        questions: [
-          { qId: "m2q1", label: "Significance & Types of Activation Functions", page: 1, tag: "Mathematical Curves", marks: "10 Marks" },
-          { qId: "m2q2", label: "Gradient Descent & 3 Methods (BGD, SGD, MBGD)", page: 4, tag: "Optimization", marks: "10 Marks" },
-          { qId: "m2q3", label: "Dropout Regularization & Anti-Overfitting", page: 7, tag: "Regularization", marks: "10 Marks" },
-          { qId: "m2q4", label: "SGD & Momentum Optimization Techniques", page: 10, tag: "Optimization & Numerical", marks: "10 Marks" }
-        ]
-      },
-      3: {
-        id: 3,
-        title: "Autoencoders & Representation Learning",
-        short: "Mod 3: Autoencoders",
-        pages: 12,
-        progress: 0,
-        status: "not-started",
-        file: "pdfs/Module3_Deep_Learning_Answers.pdf?v=dark75p",
-        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
-        questions: [
-          { qId: "m3q1", label: "Denoising Autoencoder (DAE) Architecture & Working", page: 1, tag: "Architecture", marks: "10 Marks" },
-          { qId: "m3q2", label: "Image Compression Using Autoencoders", page: 4, tag: "Application", marks: "10 Marks" },
-          { qId: "m3q3", label: "Regularization in Autoencoders (Sparsity, CAE, DAE)", page: 7, tag: "Regularization", marks: "10 Marks" },
-          { qId: "m3q4", label: "Undercomplete vs. Overcomplete Autoencoders", page: 10, tag: "Comparative Matrix", marks: "10 Marks" }
-        ]
-      },
-      4: {
-        id: 4,
-        title: "Convolutional Neural Networks (CNN)",
-        short: "Mod 4: CNN",
-        pages: 18,
-        progress: 35,
-        status: "in-progress",
-        file: "pdfs/Module4_Deep_Learning_Answers.pdf?v=dark75p",
-        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="15" x2="23" y2="15"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="15" x2="4" y2="15"/></svg>`,
-        questions: [
-          { qId: "m4q1", label: "CNN Architecture & Working Principle", page: 1, tag: "Core Architecture", marks: "10 Marks" },
-          { qId: "m4q2", label: "Convolution, Padding & Stride with Formulas", page: 4, tag: "Formulas & Numericals", marks: "10 Marks" },
-          { qId: "m4q3", label: "ResNet Architecture & Skip Connections", page: 7, tag: "Deep Architecture", marks: "10 Marks" },
-          { qId: "m4q4", label: "AlexNet Architecture, Layers & Innovations", page: 10, tag: "Benchmark Network", marks: "10 Marks" },
-          { qId: "m4q5", label: "LeNet-5 Architecture & Digit Recognition", page: 13, tag: "Foundational Network", marks: "10 Marks" },
-          { qId: "m4q6", label: "Comparative Analysis (LeNet vs AlexNet vs ResNet)", page: 16, tag: "Comparative Matrix", marks: "10 Marks" }
-        ]
-      },
-      5: {
-        id: 5,
-        title: "Recurrent Neural Networks (RNN)",
-        short: "Mod 5: RNN",
-        pages: 6,
-        progress: 0,
-        status: "not-started",
-        file: "pdfs/Module5_Deep_Learning_Answers.pdf?v=dark75p",
-        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
-        questions: [
-          { qId: "m5q1", label: "RNN Architecture, Unfolded Flow & Equations", page: 1, tag: "Sequential Flow", marks: "10 Marks" },
-          { qId: "m5q2", label: "GRU Architecture, Working & LSTM vs GRU", page: 4, tag: "Gated Architecture", marks: "10 Marks" }
-        ]
-      },
-      6: {
-        id: 6,
-        title: "Generative Adversarial Networks (GAN)",
-        short: "Mod 6: GAN",
-        pages: 9,
-        progress: 0,
-        status: "not-started",
-        file: "pdfs/Module6_Deep_Learning_Answers.pdf?v=dark75p",
-        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`,
-        questions: [
-          { qId: "m6q1", label: "GAN Concept, Architecture & Working Principle", page: 1, tag: "Generative Models", marks: "10 Marks" },
-          { qId: "m6q2", label: "GAN Roles, Minimax Game & Training Dynamics", page: 4, tag: "Game Theory", marks: "10 Marks" },
-          { qId: "m6q3", label: "Real-World Applications of GAN (Image, DeepFake, SR)", page: 7, tag: "Applied DL", marks: "10 Marks" }
-        ]
+      bda: {
+        key: "bda",
+        name: "Big Data Analytics",
+        code: "CSDC7013",
+        title: "Big Data Analytics Exam Portal",
+        sub: "Mumbai University • Rev-2019 'C' Scheme • AIML • Sem 7",
+        headerTitle: "MU Sem 7<br>Big Data Analytics",
+        headerSub: "Hadoop • HDFS • MapReduce • DGIM • CURE • PageRank",
+        totalPages: 18,
+        completedPages: 3,
+        progressPct: 100,
+        hubSub: "6 Modules • 18 Pages (Mod 2 Complete)",
+        defaultModule: 2,
+        modules: {
+          1: {
+            id: 1,
+            title: "Introduction to Big Data & Distributed Architecture",
+            short: "Mod 1: Intro to Big Data",
+            pages: 3,
+            progress: 0,
+            status: "not-started",
+            file: "pdfs/Module2_Big_Data_Analytics_Answers.pdf",
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>`,
+            questions: [
+              { qId: "b1q1", label: "Characteristics of Big Data (5 V's: Volume, Velocity, Variety, Veracity, Value)", page: 1, tag: "Core Concepts", marks: "10 Marks" },
+              { qId: "b1q2", label: "Big Data Analytical Architecture & Enterprise Pipeline", page: 2, tag: "Architecture", marks: "10 Marks" }
+            ]
+          },
+          2: {
+            id: 2,
+            title: "Hadoop Ecosystem, HDFS Architecture & MapReduce",
+            short: "Mod 2: Hadoop & HDFS",
+            pages: 3,
+            progress: 100,
+            status: "done",
+            file: "pdfs/Module2_Big_Data_Analytics_Answers.pdf",
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg>`,
+            questions: [
+              { qId: "b2q1", label: "Explain HDFS Architecture with a Neat Diagram", page: 1, tag: "Very High Priority", marks: "10 Marks" }
+            ]
+          },
+          3: {
+            id: 3,
+            title: "Mining Data Streams (DGIM & Bloom Filter)",
+            short: "Mod 3: Data Streams",
+            pages: 3,
+            progress: 0,
+            status: "not-started",
+            file: "pdfs/Module2_Big_Data_Analytics_Answers.pdf",
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`,
+            questions: [
+              { qId: "b3q1", label: "DGIM Algorithm for Counting 1s in a Sliding Window", page: 1, tag: "Stream Algorithm", marks: "10 Marks" },
+              { qId: "b3q2", label: "Bloom Filter Architecture & False Positive Analysis", page: 2, tag: "Probabilistic Structure", marks: "10 Marks" }
+            ]
+          },
+          4: {
+            id: 4,
+            title: "Clustering High-Dimensional Data (CURE & BFR)",
+            short: "Mod 4: CURE & BFR Clustering",
+            pages: 3,
+            progress: 0,
+            status: "not-started",
+            file: "pdfs/Module2_Big_Data_Analytics_Answers.pdf",
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>`,
+            questions: [
+              { qId: "b4q1", label: "CURE Algorithm for Arbitrary-Shaped Non-Spherical Clusters", page: 1, tag: "Core Algorithm", marks: "10 Marks" },
+              { qId: "b4q2", label: "BFR Algorithm for High-Dimensional Memory Clustering", page: 2, tag: "Memory Algorithm", marks: "10 Marks" }
+            ]
+          },
+          5: {
+            id: 5,
+            title: "Link Analysis & Web Mining (PageRank & HITS)",
+            short: "Mod 5: PageRank & Link Analysis",
+            pages: 3,
+            progress: 0,
+            status: "not-started",
+            file: "pdfs/Module2_Big_Data_Analytics_Answers.pdf",
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>`,
+            questions: [
+              { qId: "b5q1", label: "PageRank Algorithm: Power Iteration, Spider Traps & Dead Ends", page: 1, tag: "Web Graph", marks: "10 Marks" },
+              { qId: "b5q2", label: "HITS Algorithm: Hubs and Authorities Formulation", page: 2, tag: "Link Analysis", marks: "10 Marks" }
+            ]
+          },
+          6: {
+            id: 6,
+            title: "Recommender Systems & NoSQL Data Stores",
+            short: "Mod 6: Recommender & NoSQL",
+            pages: 3,
+            progress: 0,
+            status: "not-started",
+            file: "pdfs/Module2_Big_Data_Analytics_Answers.pdf",
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>`,
+            questions: [
+              { qId: "b6q1", label: "Collaborative Filtering vs Content-Based Recommendation", page: 1, tag: "Recommendation", marks: "10 Marks" },
+              { qId: "b6q2", label: "CAP Theorem & 4 NoSQL Data Models (Key-Value, Doc, Column, Graph)", page: 2, tag: "Database Architecture", marks: "10 Marks" }
+            ]
+          }
+        }
       }
     };
 
-    /* App State */
+    let currentTopic = 'dl';
+    function getCurrentData() {
+      return TOPICS[currentTopic].modules;
+    }
+/* App State */
     let currentTab = 'welcome';
     let activeModuleId = 1;
+    let currentTopicKey = "dl";
     let pdfDoc = null;
     let zoomLevel = 0.25;
     let userBookmarks = JSON.parse(localStorage.getItem('mu_dl_bookmarks') || '["m1q1", "m1q4", "m4q2", "m6q1"]');
@@ -1983,6 +2202,70 @@
     /* =========================================================================
        NAVIGATION & TAB SWITCHING
        ========================================================================= */
+    
+    /* =========================================================================
+       SUBJECT / TOPIC SWITCHER (Deep Learning vs Big Data Analytics)
+       ========================================================================= */
+    function switchTopic(topicKey) {
+      if (!TOPICS[topicKey]) return;
+      currentTopic = topicKey;
+
+      // Update All Pill Buttons Across Screens
+      document.querySelectorAll('.topic-pill').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelectorAll(`.topic-pill-btn-${topicKey}`).forEach(btn => {
+        btn.classList.add('active');
+      });
+
+      const t = TOPICS[topicKey];
+
+      // Update Welcome Screen
+      const wTitle = document.querySelector('.welcome-text-wrap h1');
+      if (wTitle) wTitle.innerHTML = t.title.replace(' Exam Portal', '<br>Exam Portal');
+      const wSub = document.querySelector('.welcome-text-wrap p');
+      if (wSub) wSub.innerHTML = t.sub;
+
+      const badgePages = document.querySelectorAll('.stat-badge-card .stat-val');
+      if (badgePages && badgePages.length >= 3) {
+        badgePages[0].textContent = `${t.totalPages}`;
+        badgePages[1].textContent = `${Object.keys(t.modules).length}`;
+      }
+
+      // Update Home Screen Header
+      const hUser = document.querySelector('.header-user-info h2');
+      if (hUser) hUser.innerHTML = t.headerTitle;
+      const hSub = document.querySelector('.header-user-info p');
+      if (hSub) hSub.innerHTML = t.headerSub;
+
+      // Update Hero Hub Card
+      const hubText = document.querySelector('.hub-hero-text p');
+      if (hubText) hubText.innerHTML = t.hubSub;
+
+      // Update Progress Banner
+      const progSub = document.getElementById('home-progress-sub');
+      if (progSub) progSub.textContent = `${t.completedPages} / ${t.totalPages} pages completed`;
+      const progPct = document.getElementById('home-progress-pct');
+      if (progPct) progPct.textContent = `${t.progressPct}%`;
+      const progCircle = document.getElementById('home-progress-circle');
+      if (progCircle) {
+        const offset = 138 - (138 * t.progressPct / 100);
+        progCircle.style.strokeDashoffset = offset;
+      }
+
+      // Default Active Module for this topic
+      activeModuleId = t.defaultModule;
+
+      // Refresh Current View
+      if (currentTab === 'modules') {
+        renderModulesList('all');
+      } else if (currentTab === 'question-bank') {
+        renderQuestionBank('all');
+      } else if (currentTab === 'bookmarks') {
+        renderBookmarksList();
+      }
+    }
+
     function switchTab(tabId) {
       currentTab = tabId;
 
@@ -2023,8 +2306,14 @@
     function renderModulesList(filterType) {
       const container = document.getElementById('modules-list-container');
       container.innerHTML = '';
+      
+      const totalMods = Object.values(getCurrentData()).length;
+      const allPill = document.querySelector('#screen-modules .filter-pill');
+      if (allPill && (!filterType || filterType === 'all')) {
+        allPill.textContent = `All (${totalMods})`;
+      }
 
-      Object.values(DATA).forEach(mod => {
+      Object.values(getCurrentData()).forEach(mod => {
         if (filterType === 'done' && mod.progress !== 100) return;
         if (filterType === 'in-progress' && (mod.progress <= 0 || mod.progress >= 100)) return;
         if (filterType === 'not-started' && mod.progress > 0) return;
@@ -2068,7 +2357,7 @@
        ========================================================================= */
     function openModuleDetail(modId) {
       activeModuleId = modId;
-      const mod = DATA[modId];
+      const mod = getCurrentData()[modId] || getCurrentData()[activeModuleId];
 
       document.getElementById('detail-mod-badge').textContent = `Module ${mod.id}`;
       document.getElementById('detail-mod-title').textContent = mod.title;
@@ -2105,7 +2394,7 @@
     function switchDetailTab(type, btnEl) {
       document.querySelectorAll('.segmented-control .segment-btn').forEach(b => b.classList.remove('active'));
       btnEl.classList.add('active');
-      const mod = DATA[activeModuleId];
+      const mod = getCurrentData()[activeModuleId];
       const container = document.getElementById('detail-questions-container');
 
       if (type === 'questions') {
@@ -2144,7 +2433,7 @@
       e.preventDefault();
       if (navigator.share) {
         navigator.share({
-          title: `MU Sem 7 DL - ${DATA[activeModuleId].title}`,
+          title: `MU Sem 7 - ${getCurrentData()[activeModuleId].title}`,
           url: window.location.href
         });
       } else {
@@ -2156,7 +2445,7 @@
        SCREEN 5: PDF CANVAS VIEWER
        ========================================================================= */
     async function openReaderForActiveModule(targetPage = 1) {
-      const mod = DATA[activeModuleId];
+      const mod = getCurrentData()[activeModuleId];
       document.getElementById('reader-bar-title').textContent = mod.short;
       document.getElementById('reader-page-indicator').textContent = `Page ${targetPage} / ${mod.pages}`;
       document.getElementById('reader-external-btn').setAttribute('href', mod.file);
@@ -2278,8 +2567,14 @@
     function renderQuestionBank(filter = 'all') {
       const container = document.getElementById('question-bank-container');
       container.innerHTML = '';
+      
+      const totalQs = Object.values(getCurrentData()).reduce((acc, m) => acc + m.questions.length, 0);
+      const allPill = document.querySelector('#screen-question-bank .filter-pill');
+      if (allPill && (!filter || filter === 'all')) {
+        allPill.textContent = `All (${totalQs})`;
+      }
 
-      Object.values(DATA).forEach(mod => {
+      Object.values(getCurrentData()).forEach(mod => {
         mod.questions.forEach((q, idx) => {
           if (filter === 'numerical' && !q.tag.includes('Numerical') && !q.tag.includes('Derivation')) return;
           if (filter === 'pyq' && idx > 2) return;
@@ -2325,7 +2620,7 @@
       container.innerHTML = '';
 
       let found = 0;
-      Object.values(DATA).forEach(mod => {
+      Object.values(getCurrentData()).forEach(mod => {
         mod.questions.forEach((q, idx) => {
           if (userBookmarks.includes(q.qId)) {
             found++;
@@ -2362,7 +2657,7 @@
     }
 
     function toggleBookmarkActiveQuestion() {
-      const mod = DATA[activeModuleId];
+      const mod = getCurrentData()[activeModuleId];
       const q = mod.questions[0]; // Active bookmark toggle
       const icon = document.getElementById('reader-bm-icon');
 
@@ -2397,7 +2692,7 @@
     /* =========================================================================
        QUICK REVISE SHEETS MODAL
        ========================================================================= */
-    const REVISION_DATA = {
+    const REVISION_DATA_DL = {
       concepts: {
         title: "Key Concepts (All Modules)",
         html: `
@@ -2469,8 +2764,86 @@
       }
     };
 
+    
+    const REVISION_DATA_BDA = {
+      concepts: {
+        title: "Key Concepts (Big Data Analytics)",
+        html: `
+          <p><strong>1. HDFS Master-Slave:</strong> NameNode acts as master managing in-memory namespace and block metadata; DataNodes store raw 128MB block chunks.</p>
+          <p style="margin-top:0.6rem;"><strong>2. Rack-Aware Replication:</strong> Maintains 3 copies by default — 1 on local rack, 2 on different nodes in a remote rack to guard against rack failure.</p>
+          <p style="margin-top:0.6rem;"><strong>3. Pipelined Streaming:</strong> Client streams 64KB packets through a pipeline (DN1 → DN2 → DN3); acknowledgments propagate back.</p>
+          <p style="margin-top:0.6rem;"><strong>4. Data Locality:</strong> Hadoop schedules tasks on the physical machine hosting data blocks ("moving computation to data"), eliminating network bottlenecks.</p>
+          <p style="margin-top:0.6rem;"><strong>5. DGIM Algorithm:</strong> Estimates 1s in a sliding window using at most 2 buckets per power-of-2 size with ≤ 50% relative error in O(log² N) space.</p>
+          <p style="margin-top:0.6rem;"><strong>6. PageRank & Taxation:</strong> Models random web surfer; resolves spider traps and dead ends via taxation formula with damping β = 0.85.</p>
+        `
+      },
+      formulas: {
+        title: "Important Formulas & Equations (BDA)",
+        html: `
+          <p><strong>1. HDFS Block Sizing:</strong><br>
+          <code style="background:var(--bg-card-subtle); padding:0.2rem 0.5rem; border-radius:4px; font-family:var(--font-mono);">Block Count = ⌈File Size / 128 MB⌉</code></p>
+          <p style="margin-top:0.8rem;"><strong>2. PageRank Taxation Formula:</strong><br>
+          <code style="background:var(--bg-card-subtle); padding:0.2rem 0.5rem; border-radius:4px; font-family:var(--font-mono);">v' = β M v + ((1 - β) / N) e &nbsp; (β ≈ 0.85)</code></p>
+          <p style="margin-top:0.8rem;"><strong>3. DGIM Count & Error Bound:</strong><br>
+          <code style="background:var(--bg-card-subtle); padding:0.2rem 0.5rem; border-radius:4px; font-family:var(--font-mono);">Count = ∑(Full Buckets) + (c_k / 2), &nbsp; Error ≤ 50%</code></p>
+          <p style="margin-top:0.8rem;"><strong>4. Bloom Filter False Positive Probability:</strong><br>
+          <code style="background:var(--bg-card-subtle); padding:0.2rem 0.5rem; border-radius:4px; font-family:var(--font-mono);">p = (1 - e^{-kn/m})^k, &nbsp; k_{opt} = (m/n) ln 2</code></p>
+          <p style="margin-top:0.8rem;"><strong>5. CURE Representative Points Shrinking:</strong><br>
+          <code style="background:var(--bg-card-subtle); padding:0.2rem 0.5rem; border-radius:4px; font-family:var(--font-mono);">p' = p + α(c - p) &nbsp; (Shrinking factor α = 0.2)</code></p>
+        `
+      },
+      tables: {
+        title: "Comparison Tables (BDA)",
+        html: `
+          <p><strong>1. NameNode vs DataNode:</strong> Master RAM coordinator (metadata, block maps) vs worker storage disk nodes (128MB block bytes, heartbeats).</p>
+          <p style="margin-top:0.6rem;"><strong>2. HDFS vs Traditional RDBMS:</strong> Write-Once Read-Many (WORM) batch streaming vs OLTP ACID row updates with low latency.</p>
+          <p style="margin-top:0.6rem;"><strong>3. CURE vs k-Means Clustering:</strong> Discovers arbitrary non-spherical clusters using c representative points vs spherical clusters only.</p>
+          <p style="margin-top:0.6rem;"><strong>4. Collaborative vs Content-Based Filtering:</strong> User-item correlation matrices vs item feature attribute vectors.</p>
+          <p style="margin-top:0.6rem;"><strong>5. ACID vs BASE / CAP Theorem:</strong> Strong relational consistency vs Eventual consistency in distributed NoSQL.</p>
+        `
+      },
+      diagrams: {
+        title: "Architectures at a Glance (BDA)",
+        html: `
+          <p><strong>• HDFS Master-Slave Rack Topology:</strong> NameNode + Rack 1 & Rack 2 DataNodes with Heartbeat & Block Reports.</p>
+          <p style="margin-top:0.6rem;"><strong>• HDFS 5-Stage Write Pipeline:</strong> Create → Allocate Nodes → Stream 64KB Packets → Pipelined Replication → Reverse Ack.</p>
+          <p style="margin-top:0.6rem;"><strong>• DGIM Sliding Window:</strong> Buckets of size 1, 2, 4, 8 with at most two buckets of each size.</p>
+          <p style="margin-top:0.6rem;"><strong>• CURE 5-Stage Pipeline:</strong> Random Sample → Partition → Pre-cluster → Shrink Rep Points → Assign Remaining Points.</p>
+          <p style="margin-top:0.6rem;"><strong>• MapReduce Flow:</strong> Input Data → Map Phase → Shuffle & Sort → Reduce Phase → Final Output.</p>
+        `
+      },
+      algorithms: {
+        title: "Algorithm Steps (BDA)",
+        html: `
+          <p><strong>1. HDFS File Read / Write:</strong> RPC metadata request to NameNode → direct socket stream with DataNodes → verify checksums.</p>
+          <p style="margin-top:0.6rem;"><strong>2. MapReduce Matrix Multiplication:</strong> Two-phase MapReduce formulation representing A × B with keys (i, k).</p>
+          <p style="margin-top:0.6rem;"><strong>3. DGIM Bit Processing:</strong> On 1-bit arrival, create size 1 bucket; merge 3 same-size buckets recursively if invariant violated.</p>
+          <p style="margin-top:0.6rem;"><strong>4. PageRank Power Iteration:</strong> Initialize v₀ = [1/N, ..., 1/N]ᵀ; repeat v_{t+1} = β M v_t + (1-β)/N e until ||v_{t+1} - v_t|| < ε.</p>
+        `
+      },
+      tips: {
+        title: "Exam Tips & Strategy (BDA 10/10)",
+        html: `
+          <p><strong>1. Draw HDFS Architecture Diagram First:</strong> Clearly label NameNode, DataNodes, Racks, Heartbeats, and Block Reports (3-4 marks).</p>
+          <p style="margin-top:0.6rem;"><strong>2. Provide the 300MB Block Division Example:</strong> Show Block 1 (128MB), Block 2 (128MB), and Block 3 (44MB) explaining that Block 3 takes only 44MB on disk.</p>
+          <p style="margin-top:0.6rem;"><strong>3. Detail Rack Awareness:</strong> State the exact 3-replica placement rule (Local rack node → Remote rack node 1 → Same remote rack node 2).</p>
+          <p style="margin-top:0.6rem;"><strong>4. Conclude with NameNode vs DataNode Table:</strong> A neat 6-row comparison table guarantees full marks.</p>
+        `
+      },
+      pyqs: {
+        title: "Previous Year Exam Questions (BDA)",
+        html: `
+          <p><strong>• May 2024 & Dec 2024:</strong> Explain HDFS Architecture with a neat diagram and components [10M] (Very High Priority).</p>
+          <p style="margin-top:0.6rem;"><strong>• Dec 2023 & Dec 2024:</strong> Explain CURE algorithm with representative points and shrinking toward centroid [10M].</p>
+          <p style="margin-top:0.6rem;"><strong>• Dec 2023 & May 2024:</strong> Explain DGIM algorithm for counting 1s in a sliding window with example [10M].</p>
+          <p style="margin-top:0.6rem;"><strong>• May 2024 & Dec 2024:</strong> Explain PageRank algorithm with spider traps and dead ends [10M].</p>
+        `
+      }
+    };
+
     function openRevisionSheet(type) {
-      const data = REVISION_DATA[type] || REVISION_DATA.formulas;
+      const dataset = currentTopic === 'bda' ? REVISION_DATA_BDA : REVISION_DATA_DL;
+      const data = dataset[type] || dataset.formulas;
       document.getElementById('sheet-title').textContent = data.title;
       document.getElementById('sheet-content').innerHTML = data.html;
       document.getElementById('revision-modal').classList.add('active-modal');

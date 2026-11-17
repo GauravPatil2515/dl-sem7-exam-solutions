@@ -2259,9 +2259,9 @@
         headerTitle: "MU Sem 7<br>Big Data Analytics",
         headerSub: "Hadoop • HDFS • MapReduce • DGIM • CURE • PageRank",
         totalPages: 18,
-        completedPages: 3,
+        completedPages: 4,
         progressPct: 100,
-        hubSub: "6 Modules • 18 Pages (Mod 2 Complete)",
+        hubSub: "6 Modules • 19 Pages (Mod 2 Complete)",
         defaultModule: 2,
         modules: {
           1: {
@@ -2282,7 +2282,7 @@
             id: 2,
             title: "Hadoop Ecosystem, HDFS Architecture & MapReduce",
             short: "Mod 2: Hadoop & HDFS",
-            pages: 3,
+            pages: 4,
             progress: 100,
             status: "done",
             file: "pdfs/Module2_Big_Data_Analytics_Answers.pdf",
@@ -2360,7 +2360,7 @@
     let activeModuleId = 1;
     let currentTopicKey = "dl";
     let pdfDoc = null;
-    let zoomLevel = 0.25;
+    let zoomLevel = window.innerWidth < 768 ? 0.45 : 0.25;
     let userBookmarks = JSON.parse(localStorage.getItem('mu_dl_bookmarks') || '["m1q1", "m1q4", "m4q2", "m6q1"]');
 
     /* =========================================================================
@@ -2720,7 +2720,7 @@
     });
 
     function resetZoom() {
-      zoomLevel = 0.25;
+      zoomLevel = window.innerWidth < 768 ? 0.45 : 0.25;
       rerenderAllPages();
     }
 

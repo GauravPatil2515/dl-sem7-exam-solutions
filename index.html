@@ -3,84 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
-  <title>MU Sem 7 DL Solutions (iOS Optimized Dark Portal)</title>
-  <meta name="description" content="iOS and mobile-optimized high-speed exam study portal and reader for Mumbai University Sem 7 Deep Learning (Rev-2019 'C' Scheme)">
+  <title>Deep Learning Exam Portal — MU Sem 7 AIML</title>
+  <meta name="description" content="Aesthetic, smooth iOS study portal and revision app for Mumbai University Sem 7 Deep Learning">
   
   <!-- Anti-Cache Headers -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   
-  <!-- Apple iOS Web App Configurations -->
+  <!-- iOS PWA Configurations -->
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="MU DL Solutions">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="DL Portal">
   <meta name="format-detection" content="telephone=no">
-  <meta name="theme-color" content="#090D16">
+  <meta name="theme-color" content="#F4F8F5" id="theme-meta-color">
 
   <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+
   <style>
+    /* =========================================================================
+       1. COLOR SYSTEM & CSS VARIABLES (Aesthetic Sage & Emerald iOS Theme)
+       ========================================================================= */
     :root {
-      --bg: #090D16;
-      --bg-panel: rgba(15, 23, 42, 0.88);
-      --bg-card: #131B2E;
-      --bg-subtle: #1E293B;
-      --text-main: #F8FAFC;
-      --text-muted: #94A3B8;
-      --border: #1E293B;
-      --border-light: #334155;
-      --primary: #38BDF8;
-      --primary-hover: #0EA5E9;
-      --primary-glow: rgba(56, 189, 248, 0.25);
-      --accent: #FBBF24;
-      --font-ios: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Plus Jakarta Sans", sans-serif;
-      --font-mono: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
-      --shadow-ios: 0 4px 20px rgba(0, 0, 0, 0.55);
+      /* Light Mint / Sage Mode (Exact Match to Image 4) */
+      --bg: #F4F8F5;
+      --bg-panel: #FFFFFF;
+      --bg-card: #FFFFFF;
+      --bg-card-subtle: #F0F6F2;
+      --bg-mint-glow: #E8F5EE;
+      --bg-mint-light: #F2FAF5;
+      --brand-primary: #0F766E;
+      --brand-emerald: #059669;
+      --brand-green: #10B981;
+      --brand-dark: #064E3B;
+      --brand-gradient: linear-gradient(135deg, #059669, #0F766E);
+      --brand-hero-gradient: linear-gradient(135deg, #E2F3E9 0%, #EFF8F3 100%);
+      
+      --text-main: #0F231A;
+      --text-muted: #577366;
+      --text-light: #8BA396;
+      --border-subtle: #E2ECE5;
+      --border-strong: #C9DFD1;
+      
+      --card-shadow: 0 4px 20px -2px rgba(15, 118, 110, 0.07), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+      --card-shadow-hover: 0 10px 30px -4px rgba(5, 150, 105, 0.14);
+      --btn-shadow: 0 4px 14px rgba(5, 150, 105, 0.3);
+      
+      --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Plus Jakarta Sans", sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 22px;
+      --radius-pill: 9999px;
     }
 
-    /* Invert Light Filter Mode for Outdoor / Bright Sunlight Reading */
-    body.invert-mode {
-      --bg: #F8FAFC;
-      --bg-panel: rgba(255, 255, 255, 0.92);
-      --bg-card: #F1F5F9;
-      --bg-subtle: #E2E8F0;
-      --text-main: #0F172A;
-      --text-muted: #64748B;
-      --border: #E2E8F0;
-      --border-light: #CBD5E1;
-      --primary: #0284C7;
-      --primary-hover: #0369A1;
-      --shadow-ios: 0 4px 16px rgba(0, 0, 0, 0.08);
+    body.dark-mode {
+      --bg: #09130F;
+      --bg-panel: #0E1B15;
+      --bg-card: #13241D;
+      --bg-card-subtle: #192F26;
+      --bg-mint-glow: #183327;
+      --bg-mint-light: #12241C;
+      --brand-primary: #34D399;
+      --brand-emerald: #10B981;
+      --brand-green: #059669;
+      --brand-dark: #047857;
+      --brand-gradient: linear-gradient(135deg, #10B981, #059669);
+      --brand-hero-gradient: linear-gradient(135deg, #142820 0%, #1A342A 100%);
+      
+      --text-main: #F2FAF5;
+      --text-muted: #95B3A3;
+      --text-light: #618272;
+      --border-subtle: #1D362B;
+      --border-strong: #274839;
+      
+      --card-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+      --card-shadow-hover: 0 12px 36px rgba(0, 0, 0, 0.6);
+      --btn-shadow: 0 4px 16px rgba(16, 185, 129, 0.35);
     }
 
-    body.invert-mode .page-box canvas {
-      filter: invert(0.92) hue-rotate(180deg) contrast(1.1) brightness(1.05);
-      background: #FFFFFF;
-    }
-
-    body.invert-mode .page-footer-bar {
-      background: #F8FAFC;
-      border-color: #E2E8F0;
-      color: #64748B;
-    }
-
-    body.invert-mode .btn-download {
-      background: #FFFFFF;
-      border-color: #CBD5E1;
-      color: #0F172A !important;
-    }
-
-    body.invert-mode .jump-btn,
-    body.invert-mode .dock-btn {
-      background: #F1F5F9;
-      border-color: #CBD5E1;
-      color: #334155;
-    }
-
+    /* Base Reset */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -92,353 +98,1194 @@
     html, body {
       background-color: var(--bg);
       color: var(--text-main);
-      font-family: var(--font-ios);
+      font-family: var(--font-body);
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       -webkit-text-size-adjust: 100%;
       overflow-x: hidden;
-      touch-action: manipulation;
+      transition: background-color 0.25s ease, color 0.25s ease;
     }
 
-    /* iOS Sticky Glass Header with Safe-Area Notch Inset */
-    header {
+    /* App Shell Container (Phone Dimensions Centered on Desktop) */
+    .app-viewport {
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background-color: var(--bg);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 50px rgba(0,0,0,0.06);
+    }
+
+    @media (min-width: 768px) {
+      body {
+        background-color: #E6ECE8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1.5rem 0;
+      }
+      .app-viewport {
+        border-radius: 36px;
+        overflow: hidden;
+        min-height: 920px;
+        height: 94vh;
+        border: 8px solid #FFFFFF;
+        box-shadow: 0 25px 60px -15px rgba(15, 35, 25, 0.2);
+      }
+    }
+
+    /* Organic Ambient Wave Backgrounds */
+    .wave-bg-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 240px;
+      background: radial-gradient(circle at 50% -20%, rgba(16, 185, 129, 0.18), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wave-bg-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      background: radial-gradient(circle at 50% 120%, rgba(5, 150, 105, 0.12), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Screen Views Management */
+    .screen-view {
+      display: none;
+      flex-direction: column;
+      flex: 1;
+      padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+      position: relative;
+      z-index: 1;
+      animation: fadeIn 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .screen-view.active-screen {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Safe Area Spacers */
+    .safe-top-bar {
+      height: env(safe-area-inset-top, 24px);
+      width: 100%;
+    }
+
+    /* =========================================================================
+       2. TOP APP BARS (iOS Frosted Glass)
+       ========================================================================= */
+    .ios-header {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: var(--bg-panel);
+      z-index: 40;
+      background: rgba(244, 248, 245, 0.88);
       backdrop-filter: blur(20px) saturate(180%);
       -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border-bottom: 1px solid var(--border);
-      padding-top: max(0.45rem, env(safe-area-inset-top));
-      padding-left: env(safe-area-inset-left);
-      padding-right: env(safe-area-inset-right);
-    }
-
-    .top-bar {
+      padding: 0.6rem 1.15rem 0.6rem 1.15rem;
+      border-bottom: 1px solid var(--border-subtle);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.65rem 0.95rem;
-      border-bottom: 1px solid var(--border);
     }
 
-    .brand-wrap {
+    body.dark-mode .ios-header {
+      background: rgba(14, 27, 21, 0.88);
+    }
+
+    .header-user-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .header-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-pill);
+      background: var(--brand-hero-gradient);
+      border: 1.5px solid var(--border-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand-emerald);
+      box-shadow: var(--card-shadow);
+      flex-shrink: 0;
+    }
+
+    .header-user-info h2 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+
+    .header-user-info p {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .header-actions {
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
 
-    .badge-mu {
-      background: linear-gradient(135deg, #0284C7, #38BDF8);
-      color: #090D16;
-      font-size: 0.68rem;
-      font-weight: 800;
-      padding: 0.22rem 0.5rem;
-      border-radius: 6px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      box-shadow: 0 1px 4px rgba(56, 189, 248, 0.3);
+    .icon-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      transition: all 0.15s ease;
     }
 
-    .brand-name {
-      font-size: 0.95rem;
+    .icon-btn:active {
+      transform: scale(0.92);
+      background: var(--bg-card-subtle);
+    }
+
+    /* Screen Subhead Navigation Header */
+    .nav-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.15rem;
+      background: transparent;
+    }
+
+    .nav-header-title {
+      font-size: 1.15rem;
       font-weight: 800;
       color: var(--text-main);
       letter-spacing: -0.02em;
     }
 
-    .header-controls {
+    /* =========================================================================
+       3. SCREEN 1: WELCOME / LANDING VIEW
+       ========================================================================= */
+    .welcome-container {
+      padding: 2.2rem 1.4rem 1.5rem;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 0.45rem;
+      text-align: center;
+      min-height: 100%;
+      justify-content: space-between;
     }
 
-    .mode-btn {
-      background: var(--bg-card);
-      border: 1px solid var(--border-light);
-      color: var(--text-main);
-      padding: 0.38rem 0.65rem;
-      border-radius: 8px;
-      font-size: 0.76rem;
-      font-weight: 700;
-      cursor: pointer;
+    .welcome-top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* 3D Green Stack Isometric Logo */
+    .stack-logo-wrap {
+      width: 88px;
+      height: 88px;
+      margin-bottom: 1.4rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: drop-shadow(0 12px 24px rgba(5, 150, 105, 0.28));
+    }
+
+    .pill-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.3rem;
-      transition: transform 0.15s ease, background 0.15s ease;
-      touch-action: manipulation;
-    }
-
-    .mode-btn:active {
-      transform: scale(0.94);
-    }
-
-    .header-stat {
-      font-family: var(--font-mono);
+      gap: 0.35rem;
+      background: #064E3B;
+      color: #A7F3D0;
       font-size: 0.72rem;
-      color: #38BDF8;
-      background: rgba(56, 189, 248, 0.12);
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      padding: 0.25rem 0.55rem;
-      border-radius: 8px;
-      font-weight: 700;
+      font-weight: 800;
+      padding: 0.32rem 0.85rem;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.9rem;
     }
 
-    /* Swipeable iOS Navigation Segment Pills */
-    .module-nav {
-      display: flex;
-      overflow-x: auto;
-      white-space: nowrap;
-      padding: 0.5rem 0.75rem;
-      gap: 0.45rem;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-      scroll-snap-type: x proximity;
-    }
-
-    .module-nav::-webkit-scrollbar {
-      display: none;
-    }
-
-    .mod-pill {
-      background: var(--bg-card);
-      color: var(--text-muted);
-      border: 1px solid var(--border);
-      padding: 0.48rem 0.85rem;
-      border-radius: 9999px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      cursor: pointer;
-      flex-shrink: 0;
-      scroll-snap-align: start;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      touch-action: manipulation;
-    }
-
-    .mod-pill:hover {
+    .welcome-title {
+      font-size: 1.95rem;
+      font-weight: 800;
+      line-height: 1.18;
       color: var(--text-main);
-      border-color: var(--border-light);
+      letter-spacing: -0.03em;
+      margin-bottom: 0.65rem;
     }
 
-    .mod-pill.active {
-      background: #38BDF8;
-      color: #090D16;
-      border-color: #38BDF8;
-      box-shadow: 0 3px 12px rgba(56, 189, 248, 0.4);
-      transform: scale(1.02);
+    .welcome-sub {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-bottom: 2rem;
+      max-width: 280px;
     }
 
-    /* iOS High-Visibility Action Bar */
-    .mobile-hero-actions {
-      padding: 0.85rem 0.95rem;
-      background: var(--bg-panel);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .action-row {
+    .stats-row {
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 0.6rem;
-      align-items: center;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.65rem;
+      width: 100%;
+      margin-bottom: 2.2rem;
     }
 
-    .btn-action {
+    .stat-badge-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
+      box-shadow: var(--card-shadow);
+    }
+
+    .stat-badge-card .stat-icon {
+      color: var(--brand-emerald);
+      margin-bottom: 0.1rem;
+    }
+
+    .stat-badge-card .stat-val {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .stat-badge-card .stat-lbl {
+      font-size: 0.66rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .btn-hero-cta {
+      width: 100%;
+      background: var(--brand-gradient);
+      color: #FFFFFF;
+      font-size: 1rem;
+      font-weight: 800;
+      padding: 1.05rem 1.5rem;
+      border-radius: var(--radius-pill);
+      border: none;
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1rem;
-      border-radius: 10px;
-      font-size: 0.86rem;
-      font-weight: 800;
-      text-decoration: none;
-      transition: transform 0.15s ease, opacity 0.15s ease;
-      cursor: pointer;
-      min-height: 48px; /* Conforms to Apple 48px touch target guidelines */
-      touch-action: manipulation;
+      gap: 0.6rem;
+      box-shadow: var(--btn-shadow);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .btn-action:active {
-      transform: scale(0.96);
-      opacity: 0.9;
+    .btn-hero-cta:active {
+      transform: scale(0.97);
+      box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3);
     }
 
-    .btn-viewer {
-      background: linear-gradient(135deg, #0284C7, #38BDF8);
-      color: #090D16;
-      border: none;
-      box-shadow: 0 4px 16px rgba(56, 189, 248, 0.4);
-    }
-
-    .btn-download {
-      background: var(--bg-subtle);
-      color: var(--text-main);
-      border: 1px solid var(--border-light);
-    }
-
-    .mobile-tip {
-      margin-top: 0.55rem;
-      font-size: 0.74rem;
-      color: #38BDF8;
+    .welcome-footer-tags {
       display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
+    .tag-item {
+      display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      font-weight: 600;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--text-muted);
     }
 
-    /* Main Container */
-    main {
-      padding: 0.85rem 0.95rem calc(5.5rem + env(safe-area-inset-bottom)) 0.95rem;
-      max-width: 900px;
-      margin: 0 auto;
-      padding-left: max(0.95rem, env(safe-area-inset-left));
-      padding-right: max(0.95rem, env(safe-area-inset-right));
+    /* =========================================================================
+       4. SCREEN 2: HOME / "YOUR REVISION HUB"
+       ========================================================================= */
+    .screen-content {
+      padding: 0 1.15rem;
     }
 
-    /* iOS Question Jump Chips */
-    .jump-drawer {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 0.75rem 0.85rem;
-      margin-bottom: 0.95rem;
-      box-shadow: var(--shadow-ios);
-    }
-
-    .jump-header {
+    /* Hero Revision Banner Card */
+    .hub-hero-card {
+      background: var(--brand-hero-gradient);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.25rem;
+      margin: 0.6rem 0 1.25rem;
+      position: relative;
+      overflow: hidden;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 0.6rem;
+      box-shadow: var(--card-shadow);
+      cursor: pointer;
     }
 
-    .jump-title {
-      font-size: 0.76rem;
+    .hub-hero-text h3 {
+      font-size: 1.25rem;
       font-weight: 800;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      color: var(--brand-dark);
+      margin-bottom: 0.25rem;
     }
 
-    .jump-sub {
-      font-size: 0.7rem;
-      color: #38BDF8;
+    body.dark-mode .hub-hero-text h3 {
+      color: #6EE7B7;
+    }
+
+    .hub-hero-text p {
+      font-size: 0.78rem;
       font-weight: 700;
+      color: var(--brand-emerald);
     }
 
-    .jump-scroll-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
+    .hub-hero-art {
+      width: 72px;
+      height: 72px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 6px 14px rgba(5, 150, 105, 0.2));
     }
 
-    .jump-btn {
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-light);
-      color: var(--text-main);
-      padding: 0.42rem 0.7rem;
-      border-radius: 8px;
-      font-size: 0.74rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-align: left;
-      transition: all 0.15s ease;
-      touch-action: manipulation;
+    /* Quick Action Grid */
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.65rem;
+      margin-bottom: 1.25rem;
     }
 
-    .jump-btn:active {
-      transform: scale(0.95);
-      border-color: #38BDF8;
-      color: #38BDF8;
-      background: rgba(56, 189, 248, 0.1);
-    }
-
-    /* iOS Reading Zoom Dock */
-    .reader-dock {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: var(--bg-panel);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 0.5rem 0.85rem;
-      margin-bottom: 0.95rem;
-    }
-
-    .dock-label {
-      font-size: 0.74rem;
-      font-weight: 700;
-      color: var(--text-muted);
-    }
-
-    .dock-controls {
-      display: flex;
-      gap: 0.4rem;
-    }
-
-    .dock-btn {
+    .quick-grid-card {
       background: var(--bg-card);
-      border: 1px solid var(--border-light);
-      color: var(--text-main);
-      font-size: 0.76rem;
-      font-weight: 700;
-      padding: 0.36rem 0.68rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.15s ease;
-      touch-action: manipulation;
-    }
-
-    .dock-btn:active {
-      transform: scale(0.93);
-      background: #334155;
-    }
-
-    /* PDF Page Cards */
-    .pdf-render-area {
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.95rem 0.5rem;
       display: flex;
       flex-direction: column;
-      gap: 1.35rem;
+      align-items: center;
+      text-align: center;
+      gap: 0.45rem;
+      cursor: pointer;
+      box-shadow: var(--card-shadow);
+      transition: all 0.15s ease;
+    }
+
+    .quick-grid-card:active {
+      transform: scale(0.95);
+      background: var(--bg-card-subtle);
+    }
+
+    .quick-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-mint-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand-emerald);
+      transition: all 0.2s ease;
+    }
+
+    .quick-grid-card:hover .quick-icon-wrap {
+      background: var(--brand-emerald);
+      color: #FFFFFF;
+    }
+
+    .quick-grid-title {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.25;
+    }
+
+    /* Study Progress Card */
+    .progress-banner-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: var(--card-shadow);
+      cursor: pointer;
+    }
+
+    .progress-left {
+      display: flex;
+      align-items: center;
+      gap: 0.95rem;
+    }
+
+    /* Circular SVG Progress */
+    .progress-circle-wrap {
+      position: relative;
+      width: 54px;
+      height: 54px;
+      flex-shrink: 0;
+    }
+
+    .progress-circle-wrap svg {
+      transform: rotate(-90deg);
+    }
+
+    .progress-percent-label {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .progress-info h4 {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.2rem;
+    }
+
+    .progress-info p {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .progress-right-icon {
+      color: var(--brand-emerald);
+    }
+
+    /* =========================================================================
+       5. SCREEN 3: MODULES LIST SCREEN
+       ========================================================================= */
+    /* Filter Segments / Chips Row */
+    .filter-pills-row {
+      display: flex;
+      overflow-x: auto;
+      white-space: nowrap;
+      gap: 0.45rem;
+      padding: 0.2rem 1.15rem 0.9rem;
+      scrollbar-width: none;
+    }
+
+    .filter-pills-row::-webkit-scrollbar { display: none; }
+
+    .filter-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      padding: 0.42rem 0.95rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .filter-pill.active {
+      background: #064E3B;
+      color: #A7F3D0;
+      border-color: #064E3B;
+      box-shadow: 0 2px 8px rgba(6, 78, 59, 0.25);
+    }
+
+    body.dark-mode .filter-pill.active {
+      background: #10B981;
+      color: #064E3B;
+    }
+
+    /* Module Card List */
+    .module-card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 0 1.15rem;
+    }
+
+    .module-item-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      cursor: pointer;
+      box-shadow: var(--card-shadow);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .module-item-card:hover {
+      box-shadow: var(--card-shadow-hover);
+      border-color: var(--border-strong);
+    }
+
+    .module-item-card:active {
+      transform: scale(0.98);
+    }
+
+    .module-badge-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--bg-mint-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand-emerald);
+      flex-shrink: 0;
+    }
+
+    .module-card-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .module-card-body h4 {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.3rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .module-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .progress-track-bar {
+      width: 90px;
+      height: 5px;
+      background: var(--border-subtle);
+      border-radius: 99px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .progress-fill-bar {
+      height: 100%;
+      background: var(--brand-emerald);
+      border-radius: 99px;
+    }
+
+    .module-card-arrow {
+      color: var(--text-light);
+      flex-shrink: 0;
+    }
+
+    /* =========================================================================
+       6. SCREEN 4: MODULE DETAIL VIEW
+       ========================================================================= */
+    .module-detail-hero {
+      padding: 0.6rem 1.15rem 1rem;
+    }
+
+    .module-detail-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.25rem;
+      position: relative;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 1rem;
+    }
+
+    .detail-nodes-art {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 58px;
+      height: 58px;
+      opacity: 0.85;
+    }
+
+    .detail-badge-pill {
+      display: inline-block;
+      background: #064E3B;
+      color: #6EE7B7;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 0.24rem 0.65rem;
+      border-radius: var(--radius-pill);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+    }
+
+    .detail-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.25;
+      margin-bottom: 0.45rem;
+      max-width: 80%;
+    }
+
+    .detail-meta-text {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Segmented Tab Controls */
+    .segmented-control {
+      display: flex;
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      padding: 3px;
+      margin-bottom: 1rem;
+    }
+
+    .segment-btn {
+      flex: 1;
+      padding: 0.48rem 0;
+      font-size: 0.78rem;
+      font-weight: 700;
+      border-radius: var(--radius-pill);
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .segment-btn.active {
+      background: #064E3B;
+      color: #A7F3D0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    body.dark-mode .segment-btn.active {
+      background: #10B981;
+      color: #064E3B;
+    }
+
+    /* Question Cards in Module Detail */
+    .question-list-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .question-item-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      cursor: pointer;
+      box-shadow: var(--card-shadow);
+      transition: all 0.15s ease;
+    }
+
+    .question-item-card:active {
+      transform: scale(0.98);
+      background: var(--bg-card-subtle);
+    }
+
+    .q-number-pill {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-mint-glow);
+      color: var(--brand-emerald);
+      font-size: 0.76rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .q-item-text {
+      flex: 1;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.3;
+    }
+
+    .detail-actions-dock {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .btn-action-emerald {
+      background: var(--brand-gradient);
+      color: #FFFFFF;
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-pill);
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: var(--btn-shadow);
+      transition: all 0.15s ease;
+    }
+
+    .btn-action-outline {
+      background: var(--bg-card);
+      color: var(--brand-emerald);
+      border: 1.5px solid var(--brand-emerald);
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-pill);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-action-emerald:active,
+    .btn-action-outline:active {
+      transform: scale(0.96);
+    }
+
+    /* =========================================================================
+       7. SCREEN 5: PDF READER VIEW
+       ========================================================================= */
+    .reader-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(244, 248, 245, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    body.dark-mode .reader-header {
+      background: rgba(14, 27, 21, 0.92);
+    }
+
+    .reader-title-box {
+      display: flex;
+      flex-direction: column;
       align-items: center;
     }
 
-    .page-box {
+    .reader-module-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .reader-page-status {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--brand-emerald);
+    }
+
+    .pdf-canvas-container {
+      padding: 0.85rem 0.85rem 6.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    .pdf-page-card {
       width: 100%;
-      background: #0F172A;
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      box-shadow: var(--card-shadow);
+      border: 1px solid var(--border-subtle);
       overflow: hidden;
-      box-shadow: var(--shadow-ios);
       position: relative;
     }
 
-    .page-box canvas {
+    .pdf-page-card canvas {
       display: block;
       width: 100%;
       height: auto;
       touch-action: pan-x pan-y pinch-zoom;
     }
 
-    .page-footer-bar {
-      width: 100%;
+    .pdf-page-footer {
+      padding: 0.45rem 0.75rem;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      background: var(--bg-card-subtle);
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Floating iOS Reading Control Dock */
+    .reading-dock-pill {
+      position: fixed;
+      bottom: calc(1.2rem + env(safe-area-inset-bottom));
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid rgba(226, 236, 229, 0.9);
+      border-radius: var(--radius-pill);
+      padding: 0.35rem 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      z-index: 60;
+    }
+
+    body.dark-mode .reading-dock-pill {
+      background: rgba(19, 36, 29, 0.92);
+      border-color: rgba(29, 54, 43, 0.9);
+    }
+
+    .dock-action-btn {
+      padding: 0.38rem 0.75rem;
+      border-radius: var(--radius-pill);
+      border: none;
+      background: transparent;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .dock-action-btn.active-dock {
+      background: #064E3B;
+      color: #A7F3D0;
+      box-shadow: 0 2px 8px rgba(6, 78, 59, 0.25);
+    }
+
+    body.dark-mode .dock-action-btn.active-dock {
+      background: #10B981;
+      color: #064E3B;
+    }
+
+    /* =========================================================================
+       8. SCREEN 6: QUICK REVISE VIEW
+       ========================================================================= */
+    .revise-category-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      padding: 0 1.15rem;
+    }
+
+    .revise-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.05rem 1.1rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.55rem 0.85rem;
-      background: var(--bg-card);
-      border-top: 1px solid var(--border);
-      font-size: 0.74rem;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
+      cursor: pointer;
+      box-shadow: var(--card-shadow);
+      transition: all 0.15s ease;
     }
 
-    .page-footer-bar a {
-      color: #38BDF8;
-      text-decoration: none;
+    .revise-card:active {
+      transform: scale(0.98);
+      background: var(--bg-card-subtle);
+    }
+
+    .revise-left-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .revise-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--bg-mint-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand-emerald);
+      flex-shrink: 0;
+    }
+
+    .revise-card h4 {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    /* =========================================================================
+       9. SCREEN 7: QUESTION BANK VIEW
+       ========================================================================= */
+    .bank-question-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      padding: 0 1.15rem;
+    }
+
+    .bank-q-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.95rem 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      cursor: pointer;
+      box-shadow: var(--card-shadow);
+      transition: all 0.15s ease;
+    }
+
+    .bank-q-card:active {
+      transform: scale(0.98);
+    }
+
+    .bank-q-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--brand-emerald);
+      background: var(--bg-mint-glow);
+      padding: 0.35rem 0.55rem;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .bank-q-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .bank-q-title {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.25rem;
+      line-height: 1.3;
+    }
+
+    .bank-q-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .bank-q-tag {
+      background: var(--bg-card-subtle);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      color: var(--brand-primary);
       font-weight: 700;
+    }
+
+    .bank-mark-badge {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--brand-emerald);
+      background: var(--bg-mint-light);
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    /* =========================================================================
+       10. SCREEN 8: BOOKMARKS VIEW
+       ========================================================================= */
+    .bookmarks-container {
+      padding: 0 1.15rem;
+    }
+
+    .bookmark-item-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.95rem 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 0.7rem;
+      box-shadow: var(--card-shadow);
+      cursor: pointer;
+    }
+
+    .bm-icon {
+      color: var(--brand-emerald);
+      flex-shrink: 0;
+    }
+
+    .bm-content {
+      flex: 1;
+    }
+
+    .bm-title {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.2rem;
+    }
+
+    .bm-sub {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* Modal / Sheet for Quick Revise Details */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(8px);
+      z-index: 80;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .modal-overlay.active-modal {
+      display: flex;
+    }
+
+    .modal-sheet {
+      background: var(--bg-card);
+      width: 100%;
+      max-width: 480px;
+      max-height: 85vh;
+      border-radius: 28px 28px 0 0;
+      padding: 1.5rem 1.35rem calc(2rem + env(safe-area-inset-bottom));
+      overflow-y: auto;
+      box-shadow: 0 -10px 40px rgba(0,0,0,0.2);
+      animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+
+    .sheet-handle {
+      width: 40px;
+      height: 4px;
+      border-radius: 99px;
+      background: var(--border-strong);
+      margin: 0 auto 1.25rem;
+    }
+
+    /* =========================================================================
+       11. BOTTOM TAB BAR (iOS Floating Glass Dock)
+       ========================================================================= */
+    .bottom-tab-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 480px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(25px) saturate(180%);
+      -webkit-backdrop-filter: blur(25px) saturate(180%);
+      border-top: 1px solid var(--border-subtle);
+      padding: 0.5rem 1.25rem max(0.55rem, env(safe-area-inset-bottom));
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 50;
+    }
+
+    body.dark-mode .bottom-tab-bar {
+      background: rgba(14, 27, 21, 0.94);
+      border-color: var(--border-subtle);
+    }
+
+    .tab-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.68rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      touch-action: manipulation;
+    }
+
+    .tab-btn svg {
+      transition: transform 0.15s ease, stroke 0.15s ease;
+    }
+
+    .tab-btn.active-tab {
+      color: var(--brand-emerald);
+    }
+
+    .tab-btn.active-tab svg {
+      transform: translateY(-1px);
+      stroke: var(--brand-emerald);
+    }
+
+    .tab-btn:active {
+      transform: scale(0.92);
     }
 
     /* Loading Spinner */
@@ -452,8 +1299,8 @@
     .spinner {
       width: 38px;
       height: 38px;
-      border: 3.5px solid rgba(56, 189, 248, 0.2);
-      border-top: 3.5px solid #38BDF8;
+      border: 3.5px solid rgba(16, 185, 129, 0.2);
+      border-top: 3.5px solid var(--brand-emerald);
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
       margin: 0 auto 0.85rem;
@@ -463,329 +1310,864 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-
-    /* Floating bottom mobile bar with Safe-Area Home Bar Inset */
-    .mobile-float-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(15, 23, 42, 0.94);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border-top: 1px solid var(--border-light);
-      padding: 0.65rem 0.95rem max(0.65rem, env(safe-area-inset-bottom)) 0.95rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      z-index: 99;
-    }
-
-    body.invert-mode .mobile-float-bar {
-      background: rgba(255, 255, 255, 0.94);
-    }
-
-    .float-title {
-      color: var(--text-main);
-      font-size: 0.78rem;
-      font-weight: 700;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      max-width: 58%;
-    }
-
-    .float-btn {
-      background: linear-gradient(135deg, #0284C7, #38BDF8);
-      color: #090D16;
-      font-size: 0.78rem;
-      font-weight: 800;
-      padding: 0.5rem 0.95rem;
-      border-radius: 8px;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      box-shadow: 0 3px 10px rgba(56, 189, 248, 0.35);
-      touch-action: manipulation;
-    }
-
-    .float-btn:active {
-      transform: scale(0.96);
-    }
-
-    /* Desktop View Tweaks */
-    @media (min-width: 769px) {
-      .top-bar {
-        padding: 0.85rem 1.85rem;
-      }
-      .module-nav {
-        justify-content: center;
-        padding: 0.65rem 1.25rem;
-      }
-      .mobile-hero-actions {
-        max-width: 900px;
-        margin: 1rem auto 0;
-        border: 1px solid var(--border);
-        border-radius: 12px;
-      }
-      .mobile-float-bar {
-        display: none;
-      }
-    }
   </style>
 </head>
 <body>
 
-  <!-- Sticky Header with Horizontal Module Slider -->
-  <header>
-    <div class="top-bar">
-      <div class="brand-wrap">
-        <span class="badge-mu">MU Sem 7 AIML</span>
-        <span class="brand-name">Deep Learning</span>
-      </div>
-      <div class="header-controls">
-        <button id="theme-toggle-btn" onclick="toggleTheme()" class="mode-btn" title="Toggle Light Invert for Sunlight">
-          <span id="theme-icon">☀️</span>
-          <span id="theme-text">Invert</span>
-        </button>
-        <div class="header-stat">75p Dark</div>
-      </div>
-    </div>
+  <!-- App Shell Viewport -->
+  <div class="app-viewport">
+    
+    <!-- Organic Wave Accents -->
+    <div class="wave-bg-top"></div>
+    <div class="wave-bg-bottom"></div>
 
-    <!-- Swipeable Module Pills -->
-    <nav class="module-nav" id="module-nav-bar">
-      <button class="mod-pill active" id="tab-1" onclick="selectModule(1)">Mod 1: MLP (18p)</button>
-      <button class="mod-pill" id="tab-2" onclick="selectModule(2)">Mod 2: Reg & GD (12p)</button>
-      <button class="mod-pill" id="tab-3" onclick="selectModule(3)">Mod 3: Autoencoders (12p)</button>
-      <button class="mod-pill" id="tab-4" onclick="selectModule(4)">Mod 4: CNN (18p)</button>
-      <button class="mod-pill" id="tab-5" onclick="selectModule(5)">Mod 5: RNN (6p)</button>
-      <button class="mod-pill" id="tab-6" onclick="selectModule(6)">Mod 6: GAN (9p)</button>
-    </nav>
-  </header>
+    <!-- =========================================================================
+         SCREEN 1: WELCOME SCREEN (Matches Screen 1 of Image 4)
+         ========================================================================= -->
+    <section id="screen-welcome" class="screen-view active-screen">
+      <div class="safe-top-bar"></div>
+      <div class="welcome-container">
+        <div class="welcome-top">
+          <!-- 3D Layered Green Stack Logo -->
+          <div class="stack-logo-wrap">
+            <svg width="84" height="84" viewBox="0 0 84 84" fill="none">
+              <!-- Base Shadow -->
+              <ellipse cx="42" cy="68" rx="26" ry="8" fill="rgba(5, 150, 105, 0.18)"/>
+              <!-- Layer 3 (Bottom) -->
+              <path d="M42 56L18 44L42 32L66 44L42 56Z" fill="#047857"/>
+              <path d="M18 44L42 56V62L18 50V44Z" fill="#064E3B"/>
+              <path d="M66 44L42 56V62L66 50V44Z" fill="#047857"/>
+              <!-- Layer 2 (Middle) -->
+              <path d="M42 42L18 30L42 18L66 30L42 42Z" fill="#059669"/>
+              <path d="M18 30L42 42V48L18 36V30Z" fill="#047857"/>
+              <path d="M66 30L42 42V48L66 36V30Z" fill="#059669"/>
+              <!-- Layer 1 (Top) -->
+              <path d="M42 28L18 16L42 4L66 16L42 28Z" fill="#10B981"/>
+              <path d="M18 16L42 28V34L18 22V16Z" fill="#059669"/>
+              <path d="M66 16L42 28V34L66 22V16Z" fill="#10B981"/>
+            </svg>
+          </div>
 
-  <!-- High-Visibility Action Bar for iOS & Mobile -->
-  <section class="mobile-hero-actions">
-    <div class="action-row">
-      <a id="btn-open-viewer" href="pdfs/Module1_Deep_Learning_Answers.pdf?v=dark75p" target="_blank" rel="noopener" class="btn-action btn-viewer">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-        <span>Open iOS Safari Viewer ↗</span>
-      </a>
+          <div class="pill-badge">MU Sem 7</div>
+          <h1 class="welcome-title">Deep Learning<br>Exam Portal</h1>
+          <p class="welcome-sub">Mumbai University • Rev-2019 "C" Scheme<br>AIML • Semester 7</p>
 
-      <a id="btn-download-pdf" href="pdfs/Module1_Deep_Learning_Answers.pdf?v=dark75p" download class="btn-action btn-download">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-        <span>Download</span>
-      </a>
-    </div>
-    <div class="mobile-tip">
-      <span>📱 Tip: "Open iOS Safari Viewer" opens native ProMotion 120Hz pinch-to-zoom!</span>
-    </div>
-  </section>
+          <!-- 3 Stats Badges -->
+          <div class="stats-row">
+            <div class="stat-badge-card">
+              <span class="stat-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              </span>
+              <span class="stat-val">75</span>
+              <span class="stat-lbl">Pages</span>
+            </div>
 
-  <!-- Main View -->
-  <main>
-    <!-- Question Jump Chips -->
-    <section class="jump-drawer">
-      <div class="jump-header">
-        <span class="jump-title" id="jump-header-title">Questions in Module 1</span>
-        <span class="jump-sub">Tap question to scroll</span>
-      </div>
-      <div class="jump-scroll-row" id="jump-chips-container">
-        <!-- Injected via JS -->
+            <div class="stat-badge-card">
+              <span class="stat-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              </span>
+              <span class="stat-val">6</span>
+              <span class="stat-lbl">Modules</span>
+            </div>
+
+            <div class="stat-badge-card">
+              <span class="stat-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </span>
+              <span class="stat-val">10-Mark</span>
+              <span class="stat-lbl">Answers</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+          <button class="btn-hero-cta" onclick="switchTab('home')">
+            <span>Start Revision</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+
+          <div class="welcome-footer-tags">
+            <span class="tag-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+              Offline Ready
+            </span>
+            <span class="tag-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.85c.66-.8 1.11-1.92.99-3.04-.96.04-2.12.64-2.8 1.44-.59.69-1.12 1.83-.98 2.93 1.07.08 2.13-.53 2.79-1.33z"/></svg>
+              iOS Optimized
+            </span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Reading Zoom Bar -->
-    <div class="reader-dock">
-      <span class="dock-label">Text Zoom:</span>
-      <div class="dock-controls">
-        <button class="dock-btn" onclick="adjustZoom(-0.25)">A-</button>
-        <button class="dock-btn" onclick="resetZoom()">Fit</button>
-        <button class="dock-btn" onclick="adjustZoom(0.35)">A+</button>
-        <button class="dock-btn" onclick="adjustZoom(0.9)" style="background:#38BDF8; color:#090D16; border-color:#38BDF8; font-weight:800;">Large</button>
+    <!-- =========================================================================
+         SCREEN 2: HOME / "YOUR REVISION HUB" (Matches Screen 2 of Image 4)
+         ========================================================================= -->
+    <section id="screen-home" class="screen-view">
+      <div class="safe-top-bar"></div>
+      
+      <!-- iOS Header -->
+      <header class="ios-header">
+        <div class="header-user-row">
+          <div class="header-avatar">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <div class="header-user-info">
+            <h2>MU Sem 7<br>Deep Learning</h2>
+            <p>Revision • Model Answers • Diagrams • Numericals</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button class="icon-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+            <span id="theme-btn-icon">🌙</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="screen-content">
+        <!-- Hero Revision Hub Card with Cute Books Illustration -->
+        <div class="hub-hero-card" onclick="switchTab('modules')">
+          <div class="hub-hero-text">
+            <h3>Your Revision Hub</h3>
+            <p>6 Modules • 75 Pages</p>
+          </div>
+          <div class="hub-hero-art">
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+              <!-- Book stack isometric -->
+              <path d="M36 48L12 36L36 24L60 36L36 48Z" fill="#10B981"/>
+              <path d="M12 36L36 48V56L12 44V36Z" fill="#059669"/>
+              <path d="M60 36L36 48V56L60 44V36Z" fill="#047857"/>
+              <path d="M36 38L16 28L36 18L56 28L36 38Z" fill="#34D399"/>
+              <path d="M16 28L36 38V44L16 34V28Z" fill="#10B981"/>
+              <path d="M56 28L36 38V44L56 34V28Z" fill="#059669"/>
+              <!-- Green Plant Leaves Sprouting -->
+              <path d="M54 18C54 18 58 8 48 8C48 14 54 18 54 18Z" fill="#059669"/>
+              <path d="M52 19C52 19 62 14 62 6C54 6 52 19 52 19Z" fill="#10B981"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- 6 Quick Action Grid -->
+        <div class="quick-grid">
+          <div class="quick-grid-card" onclick="switchTab('modules')">
+            <div class="quick-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <span class="quick-grid-title">Modules<br>(6)</span>
+          </div>
+
+          <div class="quick-grid-card" onclick="switchTab('question-bank')">
+            <div class="quick-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <span class="quick-grid-title">Question<br>Bank</span>
+          </div>
+
+          <div class="quick-grid-card" onclick="switchTab('revision')">
+            <div class="quick-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <span class="quick-grid-title">Quick<br>Revise</span>
+          </div>
+
+          <div class="quick-grid-card" onclick="openRevisionSheet('formulas')">
+            <div class="quick-icon-wrap">
+              <span style="font-family:serif; font-size:1.3rem; font-weight:800; font-style:italic;">∑</span>
+            </div>
+            <span class="quick-grid-title">Formulas<br>& Equations</span>
+          </div>
+
+          <div class="quick-grid-card" onclick="openRevisionSheet('diagrams')">
+            <div class="quick-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </div>
+            <span class="quick-grid-title">Diagrams<br>(All)</span>
+          </div>
+
+          <div class="quick-grid-card" onclick="openRevisionSheet('pyqs')">
+            <div class="quick-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <span class="quick-grid-title">PYQs<br>(MU)</span>
+          </div>
+        </div>
+
+        <!-- Overall Study Progress Card -->
+        <div class="progress-banner-card" onclick="switchTab('bookmarks')">
+          <div class="progress-left">
+            <div class="progress-circle-wrap">
+              <svg width="54" height="54">
+                <circle cx="27" cy="27" r="22" stroke="var(--border-subtle)" stroke-width="5" fill="none"/>
+                <circle id="home-progress-circle" cx="27" cy="27" r="22" stroke="var(--brand-emerald)" stroke-width="5" fill="none"
+                        stroke-dasharray="138" stroke-dashoffset="80" stroke-linecap="round"/>
+              </svg>
+              <div class="progress-percent-label" id="home-progress-pct">42%</div>
+            </div>
+            <div class="progress-info">
+              <h4>Study Progress</h4>
+              <p id="home-progress-sub">32 / 75 pages completed</p>
+            </div>
+          </div>
+          <div class="progress-right-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SCREEN 3: MODULES LIST SCREEN (Matches Screen 3 of Image 4)
+         ========================================================================= -->
+    <section id="screen-modules" class="screen-view">
+      <div class="safe-top-bar"></div>
+      
+      <div class="nav-header">
+        <button class="icon-btn" onclick="switchTab('home')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <h2 class="nav-header-title">Modules</h2>
+        <button class="icon-btn" onclick="switchTab('question-bank')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </div>
+
+      <!-- Filter Chips Row -->
+      <div class="filter-pills-row">
+        <button class="filter-pill active" onclick="filterModules('all', this)">All (6)</button>
+        <button class="filter-pill" onclick="filterModules('not-started', this)">Not Started</button>
+        <button class="filter-pill" onclick="filterModules('in-progress', this)">In Progress</button>
+        <button class="filter-pill" onclick="filterModules('done', this)">Done</button>
+      </div>
+
+      <!-- Modules Card List -->
+      <div class="module-card-list" id="modules-list-container">
+        <!-- Rendered dynamically via JavaScript -->
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SCREEN 4: MODULE DETAIL VIEW (Matches Screen 4 of Image 4)
+         ========================================================================= -->
+    <section id="screen-detail" class="screen-view">
+      <div class="safe-top-bar"></div>
+      
+      <div class="nav-header">
+        <button class="icon-btn" onclick="switchTab('modules')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div></div>
+        <div style="display: flex; gap: 0.4rem;">
+          <a id="detail-share-link" href="#" class="icon-btn" title="Share Module" onclick="shareCurrentModule(event)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          </a>
+          <a id="detail-download-link" href="#" download class="icon-btn" title="Download PDF">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="module-detail-hero">
+        <!-- Main Detail Card with Vector Connected Nodes Art -->
+        <div class="module-detail-card">
+          <!-- Connected nodes vector illustration -->
+          <div class="detail-nodes-art">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+              <line x1="14" y1="14" x2="42" y2="14" stroke="#10B981" stroke-width="2"/>
+              <line x1="14" y1="14" x2="28" y2="42" stroke="#10B981" stroke-width="2"/>
+              <line x1="42" y1="14" x2="28" y2="42" stroke="#10B981" stroke-width="2"/>
+              <circle cx="14" cy="14" r="6" fill="#059669"/>
+              <circle cx="42" cy="14" r="6" fill="#10B981"/>
+              <circle cx="28" cy="42" r="7" fill="#047857"/>
+            </svg>
+          </div>
+
+          <span class="detail-badge-pill" id="detail-mod-badge">Module 1</span>
+          <h2 class="detail-title" id="detail-mod-title">Multilayer Perceptrons & Optimization</h2>
+          <div class="detail-meta-text">
+            <span>📖 <strong id="detail-mod-pages">18 Pages</strong></span>
+            <span>•</span>
+            <span>📝 <strong id="detail-mod-qcount">6 Questions</strong></span>
+          </div>
+        </div>
+
+        <!-- Segmented Controls: Questions / Overview / Resources -->
+        <div class="segmented-control">
+          <button class="segment-btn active" onclick="switchDetailTab('questions', this)">Questions</button>
+          <button class="segment-btn" onclick="switchDetailTab('overview', this)">Overview</button>
+          <button class="segment-btn" onclick="switchDetailTab('resources', this)">Resources</button>
+        </div>
+
+        <!-- Questions Group Container -->
+        <div class="question-list-group" id="detail-questions-container">
+          <!-- Injected dynamically via JS -->
+        </div>
+
+        <!-- Detail Actions Dock -->
+        <div class="detail-actions-dock">
+          <button class="btn-action-outline" id="btn-open-reader-dock" onclick="openReaderForActiveModule(1)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            <span>Open PDF</span>
+          </button>
+
+          <a class="btn-action-emerald" id="btn-open-safari-dock" href="#" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            <span>Safari Viewer ↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SCREEN 5: PDF READER VIEW (Matches Screen 5 of Image 4)
+         ========================================================================= -->
+    <section id="screen-reader" class="screen-view">
+      <div class="safe-top-bar"></div>
+      
+      <!-- Reader Header Bar -->
+      <div class="reader-header">
+        <button class="icon-btn" onclick="switchTab('detail')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="reader-title-box">
+          <span class="reader-module-title" id="reader-bar-title">Mod 1 - Deep Learning</span>
+          <span class="reader-page-status" id="reader-page-indicator">Page 1 / 18</span>
+        </div>
+        <div style="display: flex; gap: 0.4rem;">
+          <button class="icon-btn" onclick="toggleBookmarkActiveQuestion()" title="Bookmark Page">
+            <span id="reader-bm-icon">🔖</span>
+          </button>
+          <a id="reader-external-btn" href="#" target="_blank" class="icon-btn" title="Open in Safari">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Render Area -->
+      <div class="pdf-canvas-container" id="reader-canvas-container">
+        <div class="loading-state">
+          <div class="spinner"></div>
+          <p>Rendering native vector pages...</p>
+        </div>
+      </div>
+
+      <!-- Floating iOS Reading Dock -->
+      <div class="reading-dock-pill">
+        <button class="dock-action-btn" onclick="adjustZoom(-0.25)">A-</button>
+        <button class="dock-action-btn" onclick="adjustZoom(0.35)">A+</button>
+        <button class="dock-action-btn active-dock" id="btn-dock-fit" onclick="resetZoom()">Fit</button>
+        <button class="dock-action-btn" onclick="switchTab('detail')">Questions</button>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SCREEN 6: QUICK REVISE VIEW (Matches Screen 6 of Image 4)
+         ========================================================================= -->
+    <section id="screen-revision" class="screen-view">
+      <div class="safe-top-bar"></div>
+      
+      <div class="nav-header">
+        <button class="icon-btn" onclick="switchTab('home')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <h2 class="nav-header-title">Quick Revise</h2>
+        <div></div>
+      </div>
+
+      <div class="screen-content">
+        <!-- Segmented Filter -->
+        <div class="segmented-control" style="margin-bottom: 1.1rem;">
+          <button class="segment-btn active" onclick="filterRevision('notes', this)">Notes</button>
+          <button class="segment-btn" onclick="filterRevision('formulas', this)">Formulas</button>
+          <button class="segment-btn" onclick="filterRevision('diagrams', this)">Diagrams</button>
+        </div>
+
+        <div class="revise-category-list">
+          <div class="revise-card" onclick="openRevisionSheet('concepts')">
+            <div class="revise-left-wrap">
+              <div class="revise-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              </div>
+              <h4>Key Concepts (All Modules)</h4>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+
+          <div class="revise-card" onclick="openRevisionSheet('formulas')">
+            <div class="revise-left-wrap">
+              <div class="revise-icon">
+                <span style="font-family:serif; font-size:1.3rem; font-weight:800; font-style:italic;">∑</span>
+              </div>
+              <h4>Important Formulas</h4>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+
+          <div class="revise-card" onclick="openRevisionSheet('tables')">
+            <div class="revise-left-wrap">
+              <div class="revise-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+              </div>
+              <h4>Comparison Tables</h4>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+
+          <div class="revise-card" onclick="openRevisionSheet('diagrams')">
+            <div class="revise-left-wrap">
+              <div class="revise-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              </div>
+              <h4>Architectures at a Glance</h4>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+
+          <div class="revise-card" onclick="openRevisionSheet('algorithms')">
+            <div class="revise-left-wrap">
+              <div class="revise-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+              </div>
+              <h4>Algorithm Steps</h4>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+
+          <div class="revise-card" onclick="openRevisionSheet('tips')">
+            <div class="revise-left-wrap">
+              <div class="revise-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              </div>
+              <h4>Exam Tips & Strategy</h4>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SCREEN 7: QUESTION BANK VIEW (Matches Screen 7 of Image 4)
+         ========================================================================= -->
+    <section id="screen-question-bank" class="screen-view">
+      <div class="safe-top-bar"></div>
+      
+      <div class="nav-header">
+        <button class="icon-btn" onclick="switchTab('home')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <h2 class="nav-header-title">Question Bank</h2>
+        <button class="icon-btn" onclick="toggleBankFilter()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+        </button>
+      </div>
+
+      <!-- Filter Chips -->
+      <div class="filter-pills-row">
+        <button class="filter-pill active" onclick="filterQuestionBank('all', this)">All (25)</button>
+        <button class="filter-pill" onclick="filterQuestionBank('10m', this)">10 Marks</button>
+        <button class="filter-pill" onclick="filterQuestionBank('numerical', this)">Numericals</button>
+        <button class="filter-pill" onclick="filterQuestionBank('pyq', this)">PYQs</button>
+      </div>
+
+      <!-- Question Cards List -->
+      <div class="bank-question-list" id="question-bank-container">
+        <!-- Rendered dynamically via JS -->
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SCREEN 8: BOOKMARKS VIEW (Matches Screen 8 of Image 4)
+         ========================================================================= -->
+    <section id="screen-bookmarks" class="screen-view">
+      <div class="safe-top-bar"></div>
+      
+      <div class="nav-header">
+        <button class="icon-btn" onclick="switchTab('home')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <h2 class="nav-header-title">Bookmarks</h2>
+        <div></div>
+      </div>
+
+      <div class="screen-content">
+        <!-- Segmented Control: Saved / Highlights -->
+        <div class="segmented-control" style="margin-bottom: 1.15rem;">
+          <button class="segment-btn active" id="bm-tab-saved" onclick="switchBmTab('saved', this)">Saved (8)</button>
+          <button class="segment-btn" id="bm-tab-highlights" onclick="switchBmTab('highlights', this)">Highlights (24)</button>
+        </div>
+
+        <!-- Bookmarks List -->
+        <div class="bookmarks-container" id="bookmarks-list-container">
+          <!-- Rendered dynamically via JS -->
+        </div>
+
+        <!-- Overall Progress Footer Card -->
+        <div class="progress-banner-card" style="margin-top: 1.5rem;">
+          <div class="progress-left">
+            <div class="progress-circle-wrap">
+              <svg width="54" height="54">
+                <circle cx="27" cy="27" r="22" stroke="var(--border-subtle)" stroke-width="5" fill="none"/>
+                <circle cx="27" cy="27" r="22" stroke="var(--brand-emerald)" stroke-width="5" fill="none"
+                        stroke-dasharray="138" stroke-dashoffset="80" stroke-linecap="round"/>
+              </svg>
+              <div class="progress-percent-label">42%</div>
+            </div>
+            <div class="progress-info">
+              <h4>Overall Progress</h4>
+              <p>32 / 75 pages completed</p>
+            </div>
+          </div>
+          <div class="progress-right-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         BOTTOM TAB BAR (iOS Floating Glass Dock - Matches all screens in Image 4)
+         ========================================================================= -->
+    <nav class="bottom-tab-bar" id="app-bottom-dock">
+      <button class="tab-btn active-tab" id="tab-nav-home" onclick="switchTab('home')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Home</span>
+      </button>
+
+      <button class="tab-btn" id="tab-nav-modules" onclick="switchTab('modules')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <span>Modules</span>
+      </button>
+
+      <button class="tab-btn" id="tab-nav-revision" onclick="switchTab('revision')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <span>Revision</span>
+      </button>
+
+      <button class="tab-btn" id="tab-nav-bookmarks" onclick="switchTab('bookmarks')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        <span>Bookmarks</span>
+      </button>
+    </nav>
+
+    <!-- Quick Revision Detail Bottom Sheet Modal -->
+    <div class="modal-overlay" id="revision-modal" onclick="closeRevisionSheet(event)">
+      <div class="modal-sheet" onclick="event.stopPropagation()">
+        <div class="sheet-handle"></div>
+        <h3 id="sheet-title" style="font-size:1.25rem; font-weight:800; color:var(--text-main); margin-bottom:0.75rem;">Important Formulas</h3>
+        <div id="sheet-content" style="font-size:0.85rem; line-height:1.6; color:var(--text-muted);">
+          <!-- Injected via JS -->
+        </div>
+        <button class="btn-action-emerald" style="width:100%; margin-top:1.5rem;" onclick="closeRevisionSheet()">Close</button>
       </div>
     </div>
 
-    <!-- PDF Render Area -->
-    <div class="pdf-render-area" id="render-area">
-      <div class="loading-state">
-        <div class="spinner"></div>
-        <p>Loading 11pt Native Dark Mode Pages...</p>
-      </div>
-    </div>
-  </main>
+  </div> <!-- End App Viewport -->
 
-  <!-- Floating Sticky Bottom Bar for Mobile Convenience -->
-  <div class="mobile-float-bar">
-    <div class="float-title" id="float-module-title">Mod 1: Multilayer Perceptrons & Optimization</div>
-    <a id="btn-float-open" href="pdfs/Module1_Deep_Learning_Answers.pdf?v=dark75p" target="_blank" rel="noopener" class="float-btn">
-      <span>Read in Safari ↗</span>
-    </a>
-  </div>
-
+  <!-- Vendored PDF.js Library -->
   <script src="pdf.min.js"></script>
   <script>
-    // Clean old caches
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then(registrations => {
-        for (let r of registrations) r.unregister();
-      });
-      if (window.caches) {
-        caches.keys().then(names => {
-          for (let name of names) caches.delete(name);
-        });
-      }
-    }
-
     if (typeof pdfjsLib !== 'undefined') {
       pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.min.js';
     }
 
+    /* =========================================================================
+       DATA REGISTRY (75 Pages across 6 Modules - MU Sem 7 Deep Learning)
+       ========================================================================= */
     const DATA = {
       1: {
-        title: "Module 1: Multilayer Perceptrons & Optimization",
+        id: 1,
+        title: "Multilayer Perceptrons & Optimization",
+        short: "Mod 1: MLP & Optimization",
+        pages: 18,
+        progress: 100,
+        status: "done",
         file: "pdfs/Module1_Deep_Learning_Answers.pdf?v=dark75p",
+        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="12" r="3"/><line x1="8.59" y1="7.41" x2="15.42" y2="10.59"/><line x1="8.59" y1="16.59" x2="15.42" y2="13.41"/></svg>`,
         questions: [
-          { label: "Q1. Representation Power of MLPs & XOR", page: 1 },
-          { label: "Q2. Feedforward Neural Networks Architecture", page: 4 },
-          { label: "Q3. Three Classes of Deep Learning (SL, UL, RL)", page: 7 },
-          { label: "Q4. Gradient Descent & SSE Derivation", page: 10 },
-          { label: "Q5. AND Gate Design via Single-Layer Perceptron", page: 13 },
-          { label: "Q6. XOR Gate Design via Multilayer Perceptron", page: 16 }
+          { qId: "m1q1", label: "Representation Power of MLPs & XOR", page: 1, tag: "Theory & Proof", marks: "10 Marks" },
+          { qId: "m1q2", label: "Feedforward Neural Networks Architecture", page: 4, tag: "Architecture", marks: "10 Marks" },
+          { qId: "m1q3", label: "Three Classes of Deep Learning (SL, UL, RL)", page: 7, tag: "Comparative Matrix", marks: "10 Marks" },
+          { qId: "m1q4", label: "Gradient Descent & SSE Derivation", page: 10, tag: "Mathematical Derivation", marks: "10 Marks" },
+          { qId: "m1q5", label: "AND Gate Design via Single-Layer Perceptron", page: 13, tag: "Design & Numerical", marks: "10 Marks" },
+          { qId: "m1q6", label: "XOR Gate Design via Multilayer Perceptron", page: 16, tag: "Design & Numerical", marks: "10 Marks" }
         ]
       },
       2: {
-        title: "Module 2: Activation, Optimization & Regularization",
+        id: 2,
+        title: "Activation, Optimization & Regularization",
+        short: "Mod 2: Activation & Optimization",
+        pages: 12,
+        progress: 60,
+        status: "in-progress",
         file: "pdfs/Module2_Deep_Learning_Answers.pdf?v=dark75p",
+        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>`,
         questions: [
-          { label: "Q1. Significance & Types of Activation Functions", page: 1 },
-          { label: "Q2. Gradient Descent & Three Methods (BGD, SGD, MBGD)", page: 4 },
-          { label: "Q3. Dropout Regularization & Anti-Overfitting", page: 7 },
-          { label: "Q4. SGD & Momentum Optimization Techniques", page: 10 }
+          { qId: "m2q1", label: "Significance & Types of Activation Functions", page: 1, tag: "Mathematical Curves", marks: "10 Marks" },
+          { qId: "m2q2", label: "Gradient Descent & 3 Methods (BGD, SGD, MBGD)", page: 4, tag: "Optimization", marks: "10 Marks" },
+          { qId: "m2q3", label: "Dropout Regularization & Anti-Overfitting", page: 7, tag: "Regularization", marks: "10 Marks" },
+          { qId: "m2q4", label: "SGD & Momentum Optimization Techniques", page: 10, tag: "Optimization & Numerical", marks: "10 Marks" }
         ]
       },
       3: {
-        title: "Module 3: Autoencoders & Representation Learning",
+        id: 3,
+        title: "Autoencoders & Representation Learning",
+        short: "Mod 3: Autoencoders",
+        pages: 12,
+        progress: 0,
+        status: "not-started",
         file: "pdfs/Module3_Deep_Learning_Answers.pdf?v=dark75p",
+        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
         questions: [
-          { label: "Q2. Denoising Autoencoder (DAE) Architecture & Working", page: 1 },
-          { label: "Q5. Image Compression using Autoencoders", page: 4 },
-          { label: "Q3. Regularization in Autoencoders (Sparsity, CAE, DAE, Decay)", page: 7 },
-          { label: "Q4. Undercomplete vs. Overcomplete Autoencoders", page: 10 }
+          { qId: "m3q1", label: "Denoising Autoencoder (DAE) Architecture & Working", page: 1, tag: "Architecture", marks: "10 Marks" },
+          { qId: "m3q2", label: "Image Compression Using Autoencoders", page: 4, tag: "Application", marks: "10 Marks" },
+          { qId: "m3q3", label: "Regularization in Autoencoders (Sparsity, CAE, DAE)", page: 7, tag: "Regularization", marks: "10 Marks" },
+          { qId: "m3q4", label: "Undercomplete vs. Overcomplete Autoencoders", page: 10, tag: "Comparative Matrix", marks: "10 Marks" }
         ]
       },
       4: {
-        title: "Module 4: Convolutional Neural Networks (CNN)",
+        id: 4,
+        title: "Convolutional Neural Networks (CNN)",
+        short: "Mod 4: CNN",
+        pages: 18,
+        progress: 35,
+        status: "in-progress",
         file: "pdfs/Module4_Deep_Learning_Answers.pdf?v=dark75p",
+        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="15" x2="23" y2="15"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="15" x2="4" y2="15"/></svg>`,
         questions: [
-          { label: "Q1. CNN Architecture & Working Principle", page: 1 },
-          { label: "Q2. Convolution, Padding & Stride with Formulas", page: 4 },
-          { label: "Q3. ResNet Architecture & Skip Connections", page: 7 },
-          { label: "Q4. AlexNet Architecture, Layers & Innovations", page: 10 },
-          { label: "Q5. LeNet-5 Architecture & Digit Recognition", page: 13 },
-          { label: "Q6. Comparative Analysis (LeNet vs AlexNet vs ResNet)", page: 16 }
+          { qId: "m4q1", label: "CNN Architecture & Working Principle", page: 1, tag: "Core Architecture", marks: "10 Marks" },
+          { qId: "m4q2", label: "Convolution, Padding & Stride with Formulas", page: 4, tag: "Formulas & Numericals", marks: "10 Marks" },
+          { qId: "m4q3", label: "ResNet Architecture & Skip Connections", page: 7, tag: "Deep Architecture", marks: "10 Marks" },
+          { qId: "m4q4", label: "AlexNet Architecture, Layers & Innovations", page: 10, tag: "Benchmark Network", marks: "10 Marks" },
+          { qId: "m4q5", label: "LeNet-5 Architecture & Digit Recognition", page: 13, tag: "Foundational Network", marks: "10 Marks" },
+          { qId: "m4q6", label: "Comparative Analysis (LeNet vs AlexNet vs ResNet)", page: 16, tag: "Comparative Matrix", marks: "10 Marks" }
         ]
       },
       5: {
-        title: "Module 5: Recurrent Neural Networks (RNN)",
+        id: 5,
+        title: "Recurrent Neural Networks (RNN)",
+        short: "Mod 5: RNN",
+        pages: 6,
+        progress: 0,
+        status: "not-started",
         file: "pdfs/Module5_Deep_Learning_Answers.pdf?v=dark75p",
+        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
         questions: [
-          { label: "Q1. RNN Architecture, Unfolding & Equations", page: 1 },
-          { label: "Q2. GRU Architecture, Working & LSTM vs GRU", page: 4 }
+          { qId: "m5q1", label: "RNN Architecture, Unfolded Flow & Equations", page: 1, tag: "Sequential Flow", marks: "10 Marks" },
+          { qId: "m5q2", label: "GRU Architecture, Working & LSTM vs GRU", page: 4, tag: "Gated Architecture", marks: "10 Marks" }
         ]
       },
       6: {
-        title: "Module 6: Generative Adversarial Networks (GAN)",
+        id: 6,
+        title: "Generative Adversarial Networks (GAN)",
+        short: "Mod 6: GAN",
+        pages: 9,
+        progress: 0,
+        status: "not-started",
         file: "pdfs/Module6_Deep_Learning_Answers.pdf?v=dark75p",
+        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`,
         questions: [
-          { label: "Q1. GAN Concept, Architecture & Working Principle", page: 1 },
-          { label: "Q2. GAN Roles, Minimax Game & Training Dynamics", page: 4 },
-          { label: "Q3. Real-World Applications of GAN (Image, DeepFake, SR)", page: 7 }
+          { qId: "m6q1", label: "GAN Concept, Architecture & Working Principle", page: 1, tag: "Generative Models", marks: "10 Marks" },
+          { qId: "m6q2", label: "GAN Roles, Minimax Game & Training Dynamics", page: 4, tag: "Game Theory", marks: "10 Marks" },
+          { qId: "m6q3", label: "Real-World Applications of GAN (Image, DeepFake, SR)", page: 7, tag: "Applied DL", marks: "10 Marks" }
         ]
       }
     };
 
-    let activeMod = 1;
+    /* App State */
+    let currentTab = 'welcome';
+    let activeModuleId = 1;
     let pdfDoc = null;
-    let zoomModifier = 0.25; // Default to larger comfortable text size for iPhone & mobile reading
+    let zoomLevel = 0.25;
+    let userBookmarks = JSON.parse(localStorage.getItem('mu_dl_bookmarks') || '["m1q1", "m1q4", "m4q2", "m6q1"]');
 
-    function toggleTheme() {
-      const isInvert = document.body.classList.toggle('invert-mode');
-      const icon = document.getElementById('theme-icon');
-      const text = document.getElementById('theme-text');
-      if (isInvert) {
-        icon.textContent = '🌙';
-        text.textContent = 'Dark';
-        localStorage.setItem('mu_theme_mode', 'invert');
+    /* =========================================================================
+       NAVIGATION & TAB SWITCHING
+       ========================================================================= */
+    function switchTab(tabId) {
+      currentTab = tabId;
+
+      // Update Screen Views
+      document.querySelectorAll('.screen-view').forEach(s => s.classList.remove('active-screen'));
+      const targetScreen = document.getElementById(`screen-${tabId}`);
+      if (targetScreen) {
+        targetScreen.classList.add('active-screen');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+
+      // Update Bottom Tab Bar State
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active-tab'));
+      const activeNavBtn = document.getElementById(`tab-nav-${tabId}`);
+      if (activeNavBtn) activeNavBtn.classList.add('active-tab');
+
+      // Hide Bottom Dock on Reader View for Full Immersion
+      const dock = document.getElementById('app-bottom-dock');
+      if (tabId === 'reader' || tabId === 'welcome') {
+        dock.style.display = 'none';
       } else {
-        icon.textContent = '☀️';
-        text.textContent = 'Invert';
-        localStorage.setItem('mu_theme_mode', 'dark');
+        dock.style.display = 'flex';
+      }
+
+      // Screen-specific Initializers
+      if (tabId === 'modules') {
+        renderModulesList('all');
+      } else if (tabId === 'question-bank') {
+        renderQuestionBank('all');
+      } else if (tabId === 'bookmarks') {
+        renderBookmarksList();
       }
     }
 
-    // Initialize theme from storage (Default is native dark mode)
-    if (localStorage.getItem('mu_theme_mode') === 'invert') {
-      document.body.classList.add('invert-mode');
-      window.addEventListener('DOMContentLoaded', () => {
-        const icon = document.getElementById('theme-icon');
-        const text = document.getElementById('theme-text');
-        if (icon && text) {
-          icon.textContent = '🌙';
-          text.textContent = 'Dark';
-        }
+    /* =========================================================================
+       SCREEN 3: MODULES LIST RENDERING
+       ========================================================================= */
+    function renderModulesList(filterType) {
+      const container = document.getElementById('modules-list-container');
+      container.innerHTML = '';
+
+      Object.values(DATA).forEach(mod => {
+        if (filterType === 'done' && mod.progress !== 100) return;
+        if (filterType === 'in-progress' && (mod.progress <= 0 || mod.progress >= 100)) return;
+        if (filterType === 'not-started' && mod.progress > 0) return;
+
+        const card = document.createElement('div');
+        card.className = 'module-item-card';
+        card.onclick = () => openModuleDetail(mod.id);
+
+        const checkOrArrow = mod.progress === 100
+          ? `<span style="color:#059669; font-weight:800; font-size:1.1rem;">✓</span>`
+          : `<span class="module-card-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 18 15 12 9 6"/></svg></span>`;
+
+        card.innerHTML = `
+          <div class="module-badge-icon">${mod.icon}</div>
+          <div class="module-card-body">
+            <h4>${mod.short}</h4>
+            <div class="module-meta-row">
+              <span>${mod.pages} pages</span>
+              <div style="display:flex; align-items:center; gap:0.5rem;">
+                <div class="progress-track-bar">
+                  <div class="progress-fill-bar" style="width: ${mod.progress}%;"></div>
+                </div>
+                <span style="font-weight:700;">${mod.progress}%</span>
+              </div>
+            </div>
+          </div>
+          ${checkOrArrow}
+        `;
+        container.appendChild(card);
       });
     }
 
-    async function selectModule(modId) {
-      activeMod = modId;
+    function filterModules(type, btnEl) {
+      document.querySelectorAll('#screen-modules .filter-pill').forEach(p => p.classList.remove('active'));
+      btnEl.classList.add('active');
+      renderModulesList(type);
+    }
+
+    /* =========================================================================
+       SCREEN 4: MODULE DETAIL RENDERING
+       ========================================================================= */
+    function openModuleDetail(modId) {
+      activeModuleId = modId;
       const mod = DATA[modId];
 
-      // Update Tab Pill UI
-      [1, 2, 3, 4, 5, 6].forEach(id => {
-        const el = document.getElementById(`tab-${id}`);
-        if (el) el.classList.toggle('active', id === modId);
-      });
+      document.getElementById('detail-mod-badge').textContent = `Module ${mod.id}`;
+      document.getElementById('detail-mod-title').textContent = mod.title;
+      document.getElementById('detail-mod-pages').textContent = `${mod.pages} Pages`;
+      document.getElementById('detail-mod-qcount').textContent = `${mod.questions.length} Questions`;
+      
+      document.getElementById('detail-download-link').setAttribute('href', mod.file);
+      document.getElementById('btn-open-safari-dock').setAttribute('href', mod.file);
 
-      // Update Action Buttons
-      const viewerBtn = document.getElementById('btn-open-viewer');
-      const downloadBtn = document.getElementById('btn-download-pdf');
-      const floatBtn = document.getElementById('btn-float-open');
-      const floatTitle = document.getElementById('float-module-title');
+      // Render Questions list
+      renderDetailQuestions(mod);
 
-      viewerBtn.setAttribute('href', mod.file);
-      downloadBtn.setAttribute('href', mod.file);
-      floatBtn.setAttribute('href', mod.file);
-      floatTitle.textContent = mod.title;
-
-      // Update Jump Chips
-      document.getElementById('jump-header-title').textContent = `${mod.title} (${mod.questions.length} Questions)`;
-      const chipsContainer = document.getElementById('jump-chips-container');
-      chipsContainer.innerHTML = '';
-      mod.questions.forEach(q => {
-        const btn = document.createElement('button');
-        btn.className = 'jump-btn';
-        btn.textContent = `${q.label} (p.${q.page})`;
-        btn.onclick = () => {
-          const target = document.getElementById(`page-node-${q.page}`);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        };
-        chipsContainer.appendChild(btn);
-      });
-
-      // Render PDF
-      await renderCurrentModule();
+      switchTab('detail');
     }
 
-    async function renderCurrentModule() {
-      const mod = DATA[activeMod];
-      const container = document.getElementById('render-area');
+    function renderDetailQuestions(mod) {
+      const container = document.getElementById('detail-questions-container');
+      container.innerHTML = '';
+
+      mod.questions.forEach((q, idx) => {
+        const item = document.createElement('div');
+        item.className = 'question-item-card';
+        item.onclick = () => openReaderForActiveModule(q.page);
+
+        item.innerHTML = `
+          <div class="q-number-pill">Q${idx + 1}</div>
+          <div class="q-item-text">${q.label}</div>
+          <span style="color:var(--text-light);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><polyline points="9 18 15 12 9 6"/></svg></span>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function switchDetailTab(type, btnEl) {
+      document.querySelectorAll('.segmented-control .segment-btn').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+      const mod = DATA[activeModuleId];
+      const container = document.getElementById('detail-questions-container');
+
+      if (type === 'questions') {
+        renderDetailQuestions(mod);
+      } else if (type === 'overview') {
+        container.innerHTML = `
+          <div style="background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:1.15rem; font-size:0.85rem; line-height:1.6; color:var(--text-muted);">
+            <h4 style="color:var(--text-main); font-weight:800; margin-bottom:0.4rem;">Syllabus Focus:</h4>
+            <p>Comprehensive 10-mark examination model answers covering mathematical foundations, complete proofs, architecture blueprints, and case study applications for Mumbai University B.E. Sem 7.</p>
+            <div style="margin-top:0.75rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <span class="bank-q-tag">100% MU Rev-2019 'C'</span>
+              <span class="bank-q-tag">Native Vector TikZ</span>
+              <span class="bank-q-tag">Strict 3p Budget</span>
+            </div>
+          </div>
+        `;
+      } else if (type === 'resources') {
+        container.innerHTML = `
+          <div style="display:flex; flex-direction:column; gap:0.6rem;">
+            <a href="${mod.file}" target="_blank" class="question-item-card" style="text-decoration:none;">
+              <div class="q-number-pill">PDF</div>
+              <div class="q-item-text">Open Full 11pt Native Vector PDF Document</div>
+              <span>↗</span>
+            </a>
+            <a href="${mod.file}" download class="question-item-card" style="text-decoration:none;">
+              <div class="q-number-pill">DL</div>
+              <div class="q-item-text">Download Offline High-Contrast Document</div>
+              <span>⬇</span>
+            </a>
+          </div>
+        `;
+      }
+    }
+
+    function shareCurrentModule(e) {
+      e.preventDefault();
+      if (navigator.share) {
+        navigator.share({
+          title: `MU Sem 7 DL - ${DATA[activeModuleId].title}`,
+          url: window.location.href
+        });
+      } else {
+        alert("Link copied to clipboard!");
+      }
+    }
+
+    /* =========================================================================
+       SCREEN 5: PDF CANVAS VIEWER
+       ========================================================================= */
+    async function openReaderForActiveModule(targetPage = 1) {
+      const mod = DATA[activeModuleId];
+      document.getElementById('reader-bar-title').textContent = mod.short;
+      document.getElementById('reader-page-indicator').textContent = `Page ${targetPage} / ${mod.pages}`;
+      document.getElementById('reader-external-btn').setAttribute('href', mod.file);
+
+      switchTab('reader');
+
+      const container = document.getElementById('reader-canvas-container');
       container.innerHTML = `
         <div class="loading-state">
           <div class="spinner"></div>
-          <p>Loading ${mod.title} (Native Dark 11pt)...</p>
+          <p>Loading ${mod.short} (Vector High-Contrast)...</p>
         </div>
       `;
 
@@ -795,31 +2177,40 @@
         container.innerHTML = '';
 
         for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
-          const pageBox = document.createElement('div');
-          pageBox.className = 'page-box';
-          pageBox.id = `page-node-${pageNum}`;
+          const pageCard = document.createElement('div');
+          pageCard.className = 'pdf-page-card';
+          pageCard.id = `reader-page-node-${pageNum}`;
 
           const canvas = document.createElement('canvas');
-          pageBox.appendChild(canvas);
+          pageCard.appendChild(canvas);
 
           const footer = document.createElement('div');
-          footer.className = 'page-footer-bar';
+          footer.className = 'pdf-page-footer';
           footer.innerHTML = `
             <span>Page ${pageNum} of ${pdfDoc.numPages}</span>
-            <a href="${mod.file}" target="_blank" rel="noopener">Open in iOS Viewer ↗</a>
+            <a href="${mod.file}" target="_blank" style="color:var(--brand-emerald); text-decoration:none; font-weight:700;">Open Safari ↗</a>
           `;
-          pageBox.appendChild(footer);
-          container.appendChild(pageBox);
+          pageCard.appendChild(footer);
+          container.appendChild(pageCard);
 
           await renderPageToCanvas(pageNum, canvas);
         }
+
+        // Scroll to requested page
+        setTimeout(() => {
+          const targetNode = document.getElementById(`reader-page-node-${targetPage}`);
+          if (targetNode) {
+            targetNode.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 150);
+
       } catch (err) {
         container.innerHTML = `
           <div class="loading-state" style="color:#EF4444;">
             <p><strong>Failed to load document</strong></p>
             <p style="font-size:0.8rem; margin-top:0.4rem;">${err.message}</p>
-            <div style="margin-top:1rem;">
-              <a href="${mod.file}" target="_blank" class="btn-action btn-viewer" style="display:inline-flex;">Open Directly in iOS Safari</a>
+            <div style="margin-top:1.25rem;">
+              <a href="${mod.file}" target="_blank" class="btn-action-emerald" style="display:inline-flex;">Open in Safari Engine</a>
             </div>
           </div>
         `;
@@ -830,13 +2221,11 @@
       if (!pdfDoc) return;
       const page = await pdfDoc.getPage(pageNum);
 
-      // Determine viewport scale based on screen width
-      const containerWidth = document.getElementById('render-area').clientWidth || window.innerWidth - 32;
+      const containerWidth = document.getElementById('reader-canvas-container').clientWidth || window.innerWidth - 32;
       const unscaledViewport = page.getViewport({ scale: 1.0 });
 
-      // Calculate fit scale and apply zoom modifier
       const baseScale = (containerWidth / unscaledViewport.width);
-      const effectiveScale = Math.max(0.75, (baseScale + zoomModifier));
+      const effectiveScale = Math.max(0.75, (baseScale + zoomLevel));
       const viewport = page.getViewport({ scale: effectiveScale });
 
       // iOS Retina resolution optimization (capped at 2.5x for performance and memory balance)
@@ -861,21 +2250,21 @@
     }
 
     function adjustZoom(delta) {
-      zoomModifier = Math.max(-0.4, Math.min(1.8, zoomModifier + delta));
+      zoomLevel = Math.max(-0.4, Math.min(1.8, zoomLevel + delta));
       rerenderAllPages();
     }
 
     function resetZoom() {
-      zoomModifier = 0.25;
+      zoomLevel = 0.25;
       rerenderAllPages();
     }
 
     async function rerenderAllPages() {
       if (!pdfDoc) return;
       for (let p = 1; p <= pdfDoc.numPages; p++) {
-        const pageBox = document.getElementById(`page-node-${p}`);
-        if (pageBox) {
-          const canvas = pageBox.querySelector('canvas');
+        const pageCard = document.getElementById(`reader-page-node-${p}`);
+        if (pageCard) {
+          const canvas = pageCard.querySelector('canvas');
           if (canvas) {
             await renderPageToCanvas(p, canvas);
           }
@@ -883,18 +2272,250 @@
       }
     }
 
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        rerenderAllPages();
-      }, 250);
-    });
+    /* =========================================================================
+       SCREEN 7: QUESTION BANK
+       ========================================================================= */
+    function renderQuestionBank(filter = 'all') {
+      const container = document.getElementById('question-bank-container');
+      container.innerHTML = '';
 
-    // Start with Module 1 on load
-    window.addEventListener('DOMContentLoaded', () => {
-      selectModule(1);
-    });
+      Object.values(DATA).forEach(mod => {
+        mod.questions.forEach((q, idx) => {
+          if (filter === 'numerical' && !q.tag.includes('Numerical') && !q.tag.includes('Derivation')) return;
+          if (filter === 'pyq' && idx > 2) return;
+
+          const card = document.createElement('div');
+          card.className = 'bank-q-card';
+          card.onclick = () => {
+            activeModuleId = mod.id;
+            openReaderForActiveModule(q.page);
+          };
+
+          card.innerHTML = `
+            <div class="bank-q-badge">Q${idx + 1}</div>
+            <div class="bank-q-content">
+              <div class="bank-q-title">${q.label}</div>
+              <div class="bank-q-meta">
+                <span class="bank-q-tag">Module ${mod.id}</span>
+                <span>Page ${q.page}</span>
+              </div>
+            </div>
+            <div class="bank-mark-badge">${q.marks}</div>
+          `;
+          container.appendChild(card);
+        });
+      });
+    }
+
+    function filterQuestionBank(type, btnEl) {
+      document.querySelectorAll('#screen-question-bank .filter-pill').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+      renderQuestionBank(type);
+    }
+
+    function toggleBankFilter() {
+      alert("Showing all verified 10-Mark MU examination questions");
+    }
+
+    /* =========================================================================
+       SCREEN 8: BOOKMARKS
+       ========================================================================= */
+    function renderBookmarksList() {
+      const container = document.getElementById('bookmarks-list-container');
+      container.innerHTML = '';
+
+      let found = 0;
+      Object.values(DATA).forEach(mod => {
+        mod.questions.forEach((q, idx) => {
+          if (userBookmarks.includes(q.qId)) {
+            found++;
+            const card = document.createElement('div');
+            card.className = 'bookmark-item-card';
+            card.onclick = () => {
+              activeModuleId = mod.id;
+              openReaderForActiveModule(q.page);
+            };
+
+            card.innerHTML = `
+              <div class="bm-icon">🔖</div>
+              <div class="bm-content">
+                <div class="bm-title">${q.label}</div>
+                <div class="bm-sub">Module ${mod.id} • Page ${q.page} • ${q.marks}</div>
+              </div>
+              <span style="color:var(--text-light); font-size:1.1rem;">›</span>
+            `;
+            container.appendChild(card);
+          }
+        });
+      });
+
+      document.getElementById('bm-tab-saved').textContent = `Saved (${found})`;
+
+      if (found === 0) {
+        container.innerHTML = `
+          <div style="text-align:center; padding:3rem 1rem; color:var(--text-muted);">
+            <p>No questions bookmarked yet.</p>
+            <p style="font-size:0.75rem; margin-top:0.4rem;">Tap the 🔖 bookmark icon while reading to save questions here!</p>
+          </div>
+        `;
+      }
+    }
+
+    function toggleBookmarkActiveQuestion() {
+      const mod = DATA[activeModuleId];
+      const q = mod.questions[0]; // Active bookmark toggle
+      const icon = document.getElementById('reader-bm-icon');
+
+      if (userBookmarks.includes(q.qId)) {
+        userBookmarks = userBookmarks.filter(id => id !== q.qId);
+        icon.textContent = '🔖';
+      } else {
+        userBookmarks.push(q.qId);
+        icon.textContent = '⭐';
+      }
+      localStorage.setItem('mu_dl_bookmarks', JSON.stringify(userBookmarks));
+    }
+
+    function switchBmTab(type, btnEl) {
+      document.querySelectorAll('#screen-bookmarks .segment-btn').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+      if (type === 'highlights') {
+        document.getElementById('bookmarks-list-container').innerHTML = `
+          <div style="background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:1.2rem; font-size:0.84rem; color:var(--text-muted); line-height:1.6;">
+            <p><strong style="color:var(--brand-emerald);">★ Universal Approximation Theorem (Mod 1, p.2):</strong> A single hidden layer with non-linear activations can approximate any continuous function.</p>
+            <hr style="margin:0.8rem 0; border:none; border-top:1px solid var(--border-subtle);">
+            <p><strong style="color:var(--brand-emerald);">★ ResNet Skip Connections (Mod 4, p.7):</strong> Allows gradients to propagate unaltered via identity mapping $\mathcal{F}(\mathbf{x}) + \mathbf{x}$.</p>
+            <hr style="margin:0.8rem 0; border:none; border-top:1px solid var(--border-subtle);">
+            <p><strong style="color:var(--brand-emerald);">★ Momentum Gradient Memory (Mod 2, p.11):</strong> Effective window horizon $N_{\\text{eff}} = \\frac{1}{1 - \\beta} = 10\\text{ steps}$.</p>
+          </div>
+        `;
+      } else {
+        renderBookmarksList();
+      }
+    }
+
+    /* =========================================================================
+       QUICK REVISE SHEETS MODAL
+       ========================================================================= */
+    const REVISION_DATA = {
+      concepts: {
+        title: "Key Concepts (All Modules)",
+        html: `
+          <p><strong>1. Multilayer Perceptron:</strong> Stacks hidden non-linear layers to overcome single-layer perceptron inseparability (XOR gate).</p>
+          <p style="margin-top:0.6rem;"><strong>2. Regularization & Dropout:</strong> Randomly drops neurons with probability $p$ at training time to prevent co-adaptation.</p>
+          <p style="margin-top:0.6rem;"><strong>3. Denoising Autoencoder:</strong> Forces network to learn robust manifold features by reconstructing clean input from noise $\\tilde{\\mathbf{x}}$.</p>
+          <p style="margin-top:0.6rem;"><strong>4. Convolution Operation:</strong> Local receptive fields and weight sharing ensure translation invariance and parameter efficiency.</p>
+          <p style="margin-top:0.6rem;"><strong>5. Gated Recurrent Unit (GRU):</strong> Couples forget and input into a single Update Gate, eliminating separate cell states.</p>
+          <p style="margin-top:0.6rem;"><strong>6. Generative Adversarial Networks:</strong> Formulates training as a two-player zero-sum minimax game between Generator and Discriminator.</p>
+        `
+      },
+      formulas: {
+        title: "Important Formulas & Equations",
+        html: `
+          <p><strong>1. Convolution Output Spatial Dimension:</strong><br>
+          <code style="background:var(--bg-card-subtle); padding:0.2rem 0.5rem; border-radius:4px; font-family:var(--font-mono);">W_out = ⌊(W - f + 2p)/s⌋ + 1</code></p>
+          <p style="margin-top:0.8rem;"><strong>2. Momentum Velocity & Update:</strong><br>
+          <code style="background:var(--bg-card-subtle); padding:0.2rem 0.5rem; border-radius:4px; font-family:var(--font-mono);">v_t = β v_{t-1} + ∇L(θ_t), &nbsp; θ_{t+1} = θ_t - η v_t</code></p>
+          <p style="margin-top:0.8rem;"><strong>3. GRU State Interpolation:</strong><br>
+          <code style="background:var(--bg-card-subtle); padding:0.2rem 0.5rem; border-radius:4px; font-family:var(--font-mono);">h_t = z_t ⊙ h_{t-1} + (1 - z_t) ⊙ h̃_t</code></p>
+          <p style="margin-top:0.8rem;"><strong>4. GAN Minimax Objective:</strong><br>
+          <code style="background:var(--bg-card-subtle); padding:0.2rem 0.5rem; border-radius:4px; font-family:var(--font-mono);">min_G max_D E[log D(x)] + E[log(1 - D(G(z)))]</code></p>
+        `
+      },
+      tables: {
+        title: "Comparison Tables",
+        html: `
+          <p><strong>1. LeNet vs. AlexNet vs. ResNet (Mod 4):</strong> Contrast depth (5 vs 8 vs 50-152), activations (Sigmoid vs ReLU), and regularization.</p>
+          <p style="margin-top:0.6rem;"><strong>2. Undercomplete vs. Overcomplete Autoencoders (Mod 3):</strong> Bottleneck compression vs. high-dimensional sparse representations.</p>
+          <p style="margin-top:0.6rem;"><strong>3. LSTM vs. GRU (Mod 5):</strong> 3 gates + cell state vs. 2 gates (Reset + Update) with 25% fewer parameters.</p>
+          <p style="margin-top:0.6rem;"><strong>4. SGD vs. Momentum-Based GD (Mod 2):</strong> Instantaneous noisy gradient vs. 10-step exponential moving average velocity.</p>
+        `
+      },
+      diagrams: {
+        title: "Architectures at a Glance",
+        html: `
+          <p><strong>• 2-2-1 MLP XOR Gate:</strong> Dual hyperplanes isolate active quadrant.</p>
+          <p style="margin-top:0.6rem;"><strong>• CNN Hierarchy:</strong> Conv $\\to$ ReLU $\\to$ MaxPool $\\to$ FC Softmax.</p>
+          <p style="margin-top:0.6rem;"><strong>• ResNet Residual Unit:</strong> Shortcut skip connection $\\mathcal{F}(\\mathbf{x}) + \\mathbf{x}$.</p>
+          <p style="margin-top:0.6rem;"><strong>• DAE Autoencoder:</strong> Corrupted input $\\tilde{\\mathbf{x}} \\to$ Encoder $\\to$ Latent $\\mathbf{z} \\to$ Decoder $\\to \\hat{\\mathbf{x}}$.</p>
+          <p style="margin-top:0.6rem;"><strong>• GRU Cell Graph:</strong> Reset gate filters past state $\\mathbf{h}_{t-1}$; update gate interpolates.</p>
+        `
+      },
+      algorithms: {
+        title: "Algorithm Steps",
+        html: `
+          <p><strong>1. Backpropagation with Gradient Descent:</strong><br>Forward pass $\\to$ Loss computation $\\to$ Backward chain rule $\\to$ Parameter update.</p>
+          <p style="margin-top:0.6rem;"><strong>2. Momentum GD Execution:</strong><br>Compute batch gradient $\\to$ Update velocity $v_t = \\beta v_{t-1} + g \\to$ Step weights $w_{t+1} = w_t - \\eta v_t$.</p>
+          <p style="margin-top:0.6rem;"><strong>3. GAN Alternate Optimization:</strong><br>Freeze Generator, train Discriminator on real/fake $\\to$ Freeze Discriminator, train Generator to maximize $D(G(z))$.</p>
+        `
+      },
+      tips: {
+        title: "Exam Tips & Strategy (Score 10/10)",
+        html: `
+          <p><strong>1. Always Draw Architecture Diagrams First:</strong> MU examiners assign 3-4 marks strictly to neat labelled vector diagrams.</p>
+          <p style="margin-top:0.6rem;"><strong>2. State Tensor Dimensions:</strong> For every CNN layer or MLP node, write input and output shapes explicitly (e.g. $\\mathbb{R}^{B \\times C \\times H \\times W}$).</p>
+          <p style="margin-top:0.6rem;"><strong>3. Provide Numerical Proofs:</strong> For gates (AND / XOR), always provide the truth table step-by-step verification.</p>
+          <p style="margin-top:0.6rem;"><strong>4. Use Comparative Matrices:</strong> Conclude 10-mark answers with structured comparison tables.</p>
+        `
+      },
+      pyqs: {
+        title: "Previous Year Exam Questions (MU)",
+        html: `
+          <p><strong>• May 2023:</strong> Design XOR Gate using MLP with complete weights and verification [10M].</p>
+          <p style="margin-top:0.6rem;"><strong>• Dec 2023:</strong> Compare AlexNet and ResNet architecture innovations [10M].</p>
+          <p style="margin-top:0.6rem;"><strong>• May 2024:</strong> Explain Denoising Autoencoder with architecture diagram and working [10M].</p>
+          <p style="margin-top:0.6rem;"><strong>• Dec 2024:</strong> Explain GRU architecture and compare with LSTM [10M].</p>
+        `
+      }
+    };
+
+    function openRevisionSheet(type) {
+      const data = REVISION_DATA[type] || REVISION_DATA.formulas;
+      document.getElementById('sheet-title').textContent = data.title;
+      document.getElementById('sheet-content').innerHTML = data.html;
+      document.getElementById('revision-modal').classList.add('active-modal');
+    }
+
+    function closeRevisionSheet(e) {
+      if (!e || e.target === document.getElementById('revision-modal')) {
+        document.getElementById('revision-modal').classList.remove('active-modal');
+      }
+    }
+
+    function filterRevision(type, btnEl) {
+      document.querySelectorAll('#screen-revision .segment-btn').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+      if (type === 'formulas') {
+        openRevisionSheet('formulas');
+      } else if (type === 'diagrams') {
+        openRevisionSheet('diagrams');
+      }
+    }
+
+    /* =========================================================================
+       DARK / LIGHT MODE THEME TOGGLE
+       ========================================================================= */
+    function toggleTheme() {
+      const isDark = document.body.classList.toggle('dark-mode');
+      const icon = document.getElementById('theme-btn-icon');
+      const metaTheme = document.getElementById('theme-meta-color');
+      if (isDark) {
+        icon.textContent = '☀️';
+        metaTheme.setAttribute('content', '#09130F');
+        localStorage.setItem('mu_theme_preference', 'dark');
+      } else {
+        icon.textContent = '🌙';
+        metaTheme.setAttribute('content', '#F4F8F5');
+        localStorage.setItem('mu_theme_preference', 'light');
+      }
+    }
+
+    // Initialize saved theme
+    if (localStorage.getItem('mu_theme_preference') === 'dark') {
+      document.body.classList.add('dark-mode');
+      const icon = document.getElementById('theme-btn-icon');
+      if (icon) icon.textContent = '☀️';
+    }
   </script>
 </body>
 </html>

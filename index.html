@@ -2258,11 +2258,11 @@
         sub: "Mumbai University • Rev-2019 'C' Scheme • AIML • Sem 7",
         headerTitle: "MU Sem 7<br>Big Data Analytics",
         headerSub: "Big Data & Hadoop • HDFS • NoSQL • Streams • CURE • PageRank",
-        totalPages: 67,
-        completedPages: 61,
-        progressPct: 91,
-        hubSub: "6 Modules • Mod 1, 2, 5 & 6 Complete (61p)",
-        defaultModule: 1,
+        totalPages: 85,
+        completedPages: 82,
+        progressPct: 96,
+        hubSub: "6 Modules • Mod 1, 2, 3, 5 & 6 Complete (82p)",
+        defaultModule: 3,
         modules: {
           1: {
             id: 1,
@@ -2297,15 +2297,21 @@
           },
           3: {
             id: 3,
-            title: "NoSQL Data Stores & CAP Theorem",
-            short: "Mod 3: NoSQL & CAP",
-            pages: 3,
-            progress: 0,
-            status: "not-started",
-            file: "pdfs/Module2_Big_Data_Analytics_Answers.pdf",
+            title: "NoSQL Databases, Patterns & Distribution Models",
+            short: "Mod 3: NoSQL",
+            pages: 21,
+            progress: 100,
+            status: "done",
+            file: "pdfs/Module3_Big_Data_Analytics_Answers.pdf?v=m3full21p",
             icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>`,
             questions: [
-              { qId: "b3q1", label: "CAP Theorem & 4 NoSQL Data Models (Key-Value, Doc, Column, Graph)", page: 1, tag: "Database Architecture", marks: "10 Marks" }
+              { qId: "b3q1", label: "Define NoSQL: Introduction, Need, Features, Business Drivers & CAP", page: 1, tag: "High Priority", marks: "10 Marks" },
+              { qId: "b3q2", label: "Four Types of NoSQL Databases (KV, Document, Column Family & Graph)", page: 4, tag: "Very High Priority • PYQ", marks: "10 Marks" },
+              { qId: "b3q3", label: "Column Family Store & Graph Store Architectural Patterns with Examples", page: 7, tag: "Very High Priority • PYQ", marks: "10 Marks" },
+              { qId: "b3q4", label: "Key-Value Store, Document Store & Variations of NoSQL Patterns", page: 10, tag: "Architecture & Patterns", marks: "10 Marks" },
+              { qId: "b3q5", label: "Shared-Nothing Architecture: Comparison, Working & Advantages", page: 13, tag: "Cluster Architecture", marks: "10 Marks" },
+              { qId: "b3q6", label: "Master-Slave vs. Peer-to-Peer Distribution Models & Quorum Consensus", page: 16, tag: "Distribution Models", marks: "10 Marks" },
+              { qId: "b3q7", label: "Big Data Problems, 4 Ways NoSQL Handles Them & Netflix Case Study", page: 19, tag: "Solutions & Case Study", marks: "10 Marks" }
             ]
           },
           4: {

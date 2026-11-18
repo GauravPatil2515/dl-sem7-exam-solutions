@@ -2257,16 +2257,16 @@
         title: "Big Data Analytics Exam Portal",
         sub: "Mumbai University • Rev-2019 'C' Scheme • AIML • Sem 7",
         headerTitle: "MU Sem 7<br>Big Data Analytics",
-        headerSub: "Hadoop • HDFS • MapReduce • DGIM • CURE • PageRank",
-        totalPages: 18,
-        completedPages: 4,
-        progressPct: 100,
-        hubSub: "6 Modules • 19 Pages (Mod 2 Complete)",
-        defaultModule: 2,
+        headerSub: "Hadoop • HDFS • NoSQL • Streams • Distance & CURE • PageRank",
+        totalPages: 22,
+        completedPages: 7,
+        progressPct: 32,
+        hubSub: "6 Modules • Mod 2 & Mod 5 Active",
+        defaultModule: 5,
         modules: {
           1: {
             id: 1,
-            title: "Introduction to Big Data & Distributed Architecture",
+            title: "Introduction to Big Data & Hadoop",
             short: "Mod 1: Intro to Big Data",
             pages: 3,
             progress: 0,
@@ -2285,7 +2285,7 @@
             pages: 4,
             progress: 100,
             status: "done",
-            file: "pdfs/Module2_Big_Data_Analytics_Answers.pdf",
+            file: "pdfs/Module2_Big_Data_Analytics_Answers.pdf?v=12pt",
             icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg>`,
             questions: [
               { qId: "b2q1", label: "Explain HDFS Architecture with a Neat Diagram", page: 1, tag: "Very High Priority", marks: "10 Marks" }
@@ -2293,58 +2293,56 @@
           },
           3: {
             id: 3,
-            title: "Mining Data Streams (DGIM & Bloom Filter)",
-            short: "Mod 3: Data Streams",
-            pages: 3,
-            progress: 0,
-            status: "not-started",
-            file: "pdfs/Module2_Big_Data_Analytics_Answers.pdf",
-            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`,
-            questions: [
-              { qId: "b3q1", label: "DGIM Algorithm for Counting 1s in a Sliding Window", page: 1, tag: "Stream Algorithm", marks: "10 Marks" },
-              { qId: "b3q2", label: "Bloom Filter Architecture & False Positive Analysis", page: 2, tag: "Probabilistic Structure", marks: "10 Marks" }
-            ]
-          },
-          4: {
-            id: 4,
-            title: "Clustering High-Dimensional Data (CURE & BFR)",
-            short: "Mod 4: CURE & BFR Clustering",
-            pages: 3,
-            progress: 0,
-            status: "not-started",
-            file: "pdfs/Module2_Big_Data_Analytics_Answers.pdf",
-            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>`,
-            questions: [
-              { qId: "b4q1", label: "CURE Algorithm for Arbitrary-Shaped Non-Spherical Clusters", page: 1, tag: "Core Algorithm", marks: "10 Marks" },
-              { qId: "b4q2", label: "BFR Algorithm for High-Dimensional Memory Clustering", page: 2, tag: "Memory Algorithm", marks: "10 Marks" }
-            ]
-          },
-          5: {
-            id: 5,
-            title: "Link Analysis & Web Mining (PageRank & HITS)",
-            short: "Mod 5: PageRank & Link Analysis",
-            pages: 3,
-            progress: 0,
-            status: "not-started",
-            file: "pdfs/Module2_Big_Data_Analytics_Answers.pdf",
-            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>`,
-            questions: [
-              { qId: "b5q1", label: "PageRank Algorithm: Power Iteration, Spider Traps & Dead Ends", page: 1, tag: "Web Graph", marks: "10 Marks" },
-              { qId: "b5q2", label: "HITS Algorithm: Hubs and Authorities Formulation", page: 2, tag: "Link Analysis", marks: "10 Marks" }
-            ]
-          },
-          6: {
-            id: 6,
-            title: "Recommender Systems & NoSQL Data Stores",
-            short: "Mod 6: Recommender & NoSQL",
+            title: "NoSQL Data Stores & CAP Theorem",
+            short: "Mod 3: NoSQL & CAP",
             pages: 3,
             progress: 0,
             status: "not-started",
             file: "pdfs/Module2_Big_Data_Analytics_Answers.pdf",
             icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>`,
             questions: [
-              { qId: "b6q1", label: "Collaborative Filtering vs Content-Based Recommendation", page: 1, tag: "Recommendation", marks: "10 Marks" },
-              { qId: "b6q2", label: "CAP Theorem & 4 NoSQL Data Models (Key-Value, Doc, Column, Graph)", page: 2, tag: "Database Architecture", marks: "10 Marks" }
+              { qId: "b3q1", label: "CAP Theorem & 4 NoSQL Data Models (Key-Value, Doc, Column, Graph)", page: 1, tag: "Database Architecture", marks: "10 Marks" }
+            ]
+          },
+          4: {
+            id: 4,
+            title: "Mining Data Streams (DGIM & Bloom Filter)",
+            short: "Mod 4: Data Streams",
+            pages: 3,
+            progress: 0,
+            status: "not-started",
+            file: "pdfs/Module2_Big_Data_Analytics_Answers.pdf",
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`,
+            questions: [
+              { qId: "b4q1", label: "DGIM Algorithm for Counting 1s in a Sliding Window", page: 1, tag: "Stream Algorithm", marks: "10 Marks" },
+              { qId: "b4q2", label: "Bloom Filter Architecture & False Positive Analysis", page: 2, tag: "Probabilistic Structure", marks: "10 Marks" }
+            ]
+          },
+          5: {
+            id: 5,
+            title: "Finding Similar Items & Clustering (Distance Measures, CURE & Streams)",
+            short: "Mod 5: Similarity & Clustering",
+            pages: 3,
+            progress: 17,
+            status: "in-progress",
+            file: "pdfs/Module5_Big_Data_Analytics_Answers.pdf?v=m5q1",
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><circle cx="8" cy="10" r="2"/><circle cx="15" cy="9" r="2"/><circle cx="13" cy="16" r="2"/></svg>`,
+            questions: [
+              { qId: "b5q1", label: "Define Distance Measures & Explain Their Importance in Finding Similar Items", page: 1, tag: "High Priority • PYQ", marks: "10 Marks" }
+            ]
+          },
+          6: {
+            id: 6,
+            title: "Real-Time Models: Recommender Systems & PageRank",
+            short: "Mod 6: Recommender & PageRank",
+            pages: 3,
+            progress: 0,
+            status: "not-started",
+            file: "pdfs/Module2_Big_Data_Analytics_Answers.pdf",
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>`,
+            questions: [
+              { qId: "b6q1", label: "PageRank Algorithm: Power Iteration, Spider Traps & Dead Ends", page: 1, tag: "Web Graph", marks: "10 Marks" },
+              { qId: "b6q2", label: "Collaborative Filtering vs Content-Based Recommendation", page: 2, tag: "Recommendation", marks: "10 Marks" }
             ]
           }
         }
